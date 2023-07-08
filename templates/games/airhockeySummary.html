@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row pt-3 pb-4">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 game-card pt-2 pb-3">
+            <p class="glow-text-games" style="font-size: 25px; text-align: center;">Air Hockey</p>
+            <img src="{% static 'images/air-hockey-full.jpg' %}" alt="air-hockey" style="margin-left: 16%; width: 70%;"> <br>
+            <p class="glow-text-games-para pt-2" style="font-size: 20px;"> 
+                Type: Two player <br>
+                Requirements: Webcam <br>
+                Last session: 08/09/23 <br>
+                View your record <br>
+            </p>
+            <div class="pb-3">
+                <button class="btn btn-primary btn-htp" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="font-weight: 600; box-shadow: 0 0 9px black; border-radius: 0px;
+                border-width: 0px;">
+                    🛈 How to play
+                </button>
+    
+                <div class="collapse pt-3" id="collapseExample">
+                  <div class="card card-body" style="background-color: black;">
+                   <p style="color: aliceblue; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                    1. The player sitting on left has to use the left hand and the player sitting on right has to use the right hand. <br>
+                    2. Move your hand and try to hit the puck. Make sure your other hand is not distinctively visible. <br>
+                    3. Once the puck crosses the vertical boundary of either side, the opposing player wins! Each touch counts as a point. <br>
+                    4. Press 'r' to continue playing, and 'q' to quit.
+                   </p>
+                  </div>
+                </div>
+            </div>
+
+            <a href="airhockeyPlay" style="text-decoration: none;">
+                <div class="d-grid">
+                    <button class="btn btn-dark glow-text-games" type="button" style="background-color: black; font-size: 150%;">
+                        PLAY
+                    </button>
+                </div>
+            </a>
+
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+
+{% endblock content %}

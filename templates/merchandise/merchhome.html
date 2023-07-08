@@ -1,0 +1,140 @@
+{% extends 'merchbase.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <!-- Start of categories -->
+    <div class="row pt-3">
+        <div class="col-md-4"></div>
+
+        <div class="col-md-1 text-center" style="padding-left: 5%;">
+          <div>
+            <a href="#"><img src="{% static 'images/clothing.png' %}" alt="clothing" style="height: 80px;">
+              <span class="normal-text">Clothing
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-md-1 text-center" style="padding-left: 5%;">
+          <div>
+            <a href="#"><img src="{% static 'images/gadgets.png' %}" alt="gadgets" style="height: 80px;">
+              <span class="normal-text">Gadgets
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-md-1 text-center" style="padding-left: 5%;">
+          <div>
+            <a href="#"><img src="{% static 'images/mini-computer.png' %}" alt="miniatures" style="height: 80px;">
+              <span class="normal-text">Miniatures
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- End of categories -->
+
+      <!-- Search results -->
+      <div class="row pt-4">
+        <div class="col-md-12">
+          <p class="normal-text" style="font-size: 25px;">Currently Showing results for: All categories</p>
+        </div>
+      </div>
+
+      <!-- Showing products -->
+
+      <div class="row pt-4 pb-4">
+        <div class="col-md-2"></div>
+
+        <div class="col-md-2">
+          <div class="card-container">
+            <div class="overlay">
+              <div class = "items"></div>
+              <div class = "items head">
+                <p>Flower Embroidery Hoop Art</p>
+                <hr>
+              </div>
+              <div class = "items price">
+                <p class="old">$699</p>
+                <p class="new">$345</p>
+              </div>
+              <div class="items cart">
+                <i class="fa fa-shopping-cart"></i>
+                <span>ADD TO CART</span>
+            </div>
+           </div>
+          </div>
+        </div>
+        
+        <div class="col-md-2">
+          <div class="card-container">
+            <div class="overlay">
+              <div class = "items"></div>
+              <div class = "items head">
+                <p>Flower Embroidery Hoop Art</p>
+                <hr>
+              </div>
+              <div class = "items price">
+                <p class="old">$699</p>
+                <p class="new">$345</p>
+              </div>
+              <div class="items cart">
+                <i class="fa fa-shopping-cart"></i>
+                <span>ADD TO CART</span>
+            </div>
+           </div>
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="card-container">
+            <div class="overlay">
+              <div class = "items"></div>
+              <div class = "items head">
+                <p>Flower Embroidery Hoop Art</p>
+                <hr>
+              </div>
+              <div class = "items price">
+                <p class="old">$699</p>
+                <p class="new">$345</p>
+              </div>
+              <div class="items cart">
+                <i class="fa fa-shopping-cart"></i>
+                <span>ADD TO CART</span>
+            </div>
+           </div>
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="card-container">
+            <div class="overlay">
+              <div class = "items"></div>
+              <div class = "items head">
+                <p>Flower Embroidery Hoop Art</p>
+                <hr>
+              </div>
+              <div class = "items price">
+                <p class="old">$699</p>
+                <p class="new">$345</p>
+              </div>
+              <div class="items cart">
+                <i class="fa fa-shopping-cart"></i>
+                <span>ADD TO CART</span>
+            </div>
+           </div>
+          </div>
+        </div>
+
+        <!-- Product row -->
+
+      </div>
+
+      <!-- Container Fluid -->
+</div>
+
+
+{% endblock content %}

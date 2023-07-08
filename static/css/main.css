@@ -1,0 +1,318 @@
+
+#CodeCityLogo{
+    color: white;
+    text-shadow: 
+    0 0 7px #ffffff,
+    0 0 42px #152fd6,
+    0 0 82px #152fd6,
+    0 0 251px #152fd6;
+    font-weight: 600;
+    font-size: 40px;
+    animation: glow 0.5s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes glow{
+    100%{
+        text-shadow: 
+        0 0 4px white,
+        0 0 11px white,
+        0 0 40px rgb(19, 3, 241),
+        0 0 100px rgb(19, 3, 241),
+        0 0 250px rgb(19, 3, 241),
+        0 0 900px rgb(40, 0, 0);
+    }
+    0%{
+        text-shadow: 
+        0 0 2px white,
+        0 0 9px white,
+        0 0 39px rgb(19, 3, 241),
+        0 0 90px rgb(19, 3, 241),
+        0 0 130px rgb(19, 3, 241),
+        0 0 200px rgb(70, 1, 1);
+    }
+}
+.homebody{
+    background-color: #212529;
+}
+  
+
+.glow-text{
+    color: rgb(214, 212, 212);
+    text-shadow: 
+    0 0 7px #9aaaf1,
+    0 0 42px #142065,
+    0 0 82px #172575,
+    0 0 251px #101b63;
+    font-weight: 600;
+    font-size: 40px;
+}
+.glow-text-violet{
+    color: rgb(197, 47, 197);
+    text-shadow: 
+    0 0 7px #593c5a,
+    0 0 42px #531465,
+    0 0 82px #531775,
+    0 0 251px #5d1063;
+    font-weight: 600;
+    font-size: 50px;
+    text-align: center;
+}
+
+.glow-text-dark{
+    color: rgb(0, 0, 0);
+    text-shadow: 
+    0 0 7px #aab7f4,
+    0 0 7px #9aaaf1,
+    0 0 42px #142065,
+    0 0 82px #172575,
+    0 0 251px #101b63;
+    font-weight: 600;
+    font-size: 35px;
+}
+
+.glow-text-games{
+    color: rgb(5, 236, 13);
+    text-shadow: 
+    0 0 9px #025003,
+    0 0 9px #04711f,
+    0 0 42px #142065,
+    0 0 82px #172575,
+    0 0 251px #101b63;
+    font-weight: 600;
+    font-size: 35px;
+}
+
+.glow-text-games-para{
+    color: rgb(5, 216, 47);
+    text-shadow: 
+    0 0 7px #000000,
+    0 0 7px #202020,
+    0 0 42px #142065,
+    0 0 82px #172575,
+    0 0 251px #101b63;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.FrontCard{
+    background-color:rgba(0, 0, 0, 0.708);
+    height: 250px;
+    border-radius: 1%;
+    box-shadow: 0 0 9px rgba(7, 7, 7, 0.805);
+}
+
+.game-card{
+    border: 3px dashed rgb(4, 30, 132);
+    box-shadow: 0 0 8px white;
+}
+
+.btn-htp{
+    background-color: rgb(6, 189, 6);
+}
+
+.merch-top{
+    background-color: #FFD95A;
+    color: #4C3D3D;
+    font-size: 30px;
+    text-align: center;
+}
+
+a{
+    text-decoration: none;
+}
+
+.search{
+    background-color: #C07F00;
+    border-radius: 0%;
+}
+
+.sign-in:hover{
+    background-color: #FFD95A;
+    border-radius: 0%;
+}
+
+.merch-body{
+    background-color: #FFF7D4;
+}
+
+.category-image{
+    height: 20px;
+}
+
+.normal-text{
+    color: #4C3D3D; 
+    font-size: 17px; 
+    font-weight: 700; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.cart-count{
+    font-size: 15px;
+    position: relative;
+    bottom: 7%;
+    right: 29%;
+}
+
+body {
+  background-color: #FEF5DF;
+}
+
+.white-text{
+    color: white;
+    text-decoration: none;
+    
+}
+ 
+.card-container {
+  width: 200px;
+  height: 300px;
+  
+  /* position: absolute;
+  top:0; right: 0; left: 0; bottom: 0;
+  margin: auto; */
+  
+  background: url("https://i.pinimg.com/564x/6f/5a/b1/6f5ab1b470beeeeaf285bb451c63ac8f.jpg");
+  background-color: black;
+  background-size: cover;
+  cursor: pointer;
+  
+  -webkit-box-shadow: 0 0 5px #000;
+        box-shadow: 0 0 5px #000;
+  }
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 2fr 2fr 1fr;
+  
+  background: rgba(77, 77, 77, .9);
+  color: #FEF5DF;
+  opacity: 0;
+  transition: all 0.5s;
+  
+  font-family: 'Playfair Display', serif;
+}
+
+
+.items {
+  padding-left: 20px;
+  letter-spacing: 3px;
+}
+
+.head {
+  font-size: 30px;
+  line-height: 40px;
+  
+  transform: translateY(40px);
+  transition: all 0.7s;
+  hr {
+    display: block;
+    width: 0;
+    
+    border: none;
+    border-bottom: solid 2px #FEF5DF;
+    
+    position: absolute;
+    bottom: 0; left:20px;
+    
+    transition: all .5s;
+  }
+}
+
+.price {
+  font-size: 22px;
+  line-height: 10px;
+  font-weight: bold;  
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.7s;
+  .old {
+    text-decoration: line-through;
+    color: lighten(rgb(77, 77, 77),40%);
+  }
+}
+
+.cart {
+  font-size: 12px;
+  opacity: 0;
+  letter-spacing: 1px;
+  font-family: 'Lato', sans-serif;
+  transform: translateY(40px);
+  transition: all 0.7s;
+  i {
+    font-size: 16px;
+  }
+  span {
+    margin-left: 10px;
+  }
+}
+
+.card-container:hover .overlay {
+  opacity: 1;
+  & .head {
+    transform: translateY(0px);
+  }
+  
+  & hr {
+    width: 75px;
+    transition-delay: 0.4s;
+  }
+  
+  & .price {
+    transform: translateY(0px);
+    transition-delay: 0.3s;
+    opacity: 1;
+  }
+  
+  & .cart {
+    transform: translateY(0px);
+    transition-delay: 0.6s;
+    opacity: 1;
+  }
+}
+
+
+.end-line{
+  border-top: 2px rgb(255, 255, 255);
+  border-style:dashed;
+}
+
+.end-text{
+  font-family: 'Roboto Mono', monospace;
+  color: red;
+}
+
+.fg-dark label{
+  color: aliceblue;
+}
+
+
+
+
+
+/* pallette
+0079FF blue
+00DFA2 green
+F6FA70 yellow
+FF0060 pink
+
+
+FFF7D4 white
+FFD95A light yellow
+C07F00 orchre
+4C3D3D dark grey
+
+*/
+
+
+/* 
+#EDE9D5 light grey
+#E7AB9A light pink 
+#DF7857 orange
+#617143 green
+
+*/
+

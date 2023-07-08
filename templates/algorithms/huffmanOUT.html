@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <h3 style="color: aliceblue; ">Here's how your compressed text looks like:</h3>
+            <div style="background-color: antiquewhite;">
+                <p style="overflow-wrap: break-word;">{{compressedText}}</p>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="d-flex justify-content-center"><h3 style="color: aliceblue">Details</h3></div>
+            <pre style="color: aliceblue; font-size: 17px;">Frequency Table: {{letters}}</pre>
+            <pre style="color: aliceblue; font-size: 17px;">                 {{frequencies}}<hr style="border-top: 1px solid white;"></pre>
+            <pre style="color: aliceblue; font-size: 17px;">Encodings: {{encodingDictionary}}</pre>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

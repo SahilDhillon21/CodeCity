@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row pt-4 pb-2">
+        <div class="col-md-12">
+            <div class="card" style="background-color: black; border-radius: 1%;
+            box-shadow: 0 0 9px rgba(111, 205, 135, 0.805);">
+                <div class="card-body">
+                  <a href="airhockeySummary" style="text-decoration: none;"><h5 class="card-title glow-text-games">Air Hockey</h5></a>
+                  <p class="card-text glow-text-games-para">Test your air hockey skills in this fun two player game!</p>
+                  <p class="card-text"><small class="text-muted">Two player</small></p>
+                </div>
+                <a href="airhockeySummary"><img class="card-img-bottom" src="{% static 'images/air-hockey.jpg' %}" alt="air-hockey" style="height: 200px"></a>
+              </div>
+        </div>
+    </div>
+    <div class="row pt-4 pb-4">
+        <div class="col-md-12">
+            <div class="card" style="background-color: black; border-radius: 1%;
+            box-shadow: 0 0 9px rgba(111, 205, 135, 0.805);">
+                <div class="card-body">
+                  <a href="air-piano" style="text-decoration: none;"><h5 class="card-title glow-text-games">Air Piano</h5></a>
+                  <p class="card-text glow-text-games-para">Don't have a piano at home? Worry not! We've got you covered.</p>
+                  <p class="card-text"><small class="text-muted">Single Player</small></p>
+                </div>
+                <a href="airpianoSummary"><img class="card-img-bottom" src="{% static 'images/piano.jpg' %}" alt="air-piano" style="height: 200px"></a>
+              </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

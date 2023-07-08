@@ -1,0 +1,111 @@
+{% extends 'codepubbase.html' %}
+{% load static %}
+
+{% block content %}
+    
+<section class="vh-100" style="background-color: #F6F1E9;">
+    <div class="container h-20">
+    
+
+      <div class="row d-flex justify-content-center align-items-center h-100 pt-5 pb-5">
+        <div class="col-lg-12 col-xl-11">
+          <div class="card text-black" style="border-radius: 25px; background-color: #FFD93D;">
+            <div class="card-body p-md-5">
+              <div class="row justify-content-center">
+                <div class="col-md-7">
+                    <div>
+                        <style>
+                          h5{
+                            text-align: center;
+                          }
+                          .info{
+                            color: red;
+                          }
+
+                          .success{
+                            color: green;
+                          }
+                        </style>
+                        {% for message in messages %}
+                        <h5 class="{{message.tags}}">{{message}}</h5>
+                        {% endfor %}
+                      </div>
+  
+                  <p class="text-center h2 fw-bold mb-3 " style="color: #4F200D;">Profile settings of <b>{{user.username}}</b></p>
+  
+                  <form class="" action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <!-- <div class="align-items-center">
+                        <img src="{{user_profile.profileimg.url}}" alt="profile-image" class="image-fluid">   
+                    </div> -->
+                    <div class="row">
+                        <div class="col text-center mb-3">
+                            <img width="300"  src="{{user_profile.profileimg.url}}" alt="profile-image" class="image-fluid"> 
+                        </div>
+                    </div>
+                
+
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 text-center mb-3">
+                            <p class="h6 mt-1" style="color: #4F200D;">Update your profile picture</p> 
+                        </div>
+                        <div class="col-md-6 text-center mb-3">
+                            <input class="mb-2 mx-2 btn-primary" type="file" name="image">
+                        </div>
+                    </div>
+
+                    
+                    
+                    <div class="d-flex flex-row align-items-center mb-3">
+                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-2">
+                        <label class="form-label pt-1 font-weight-bold h6" for="form3Example1c" style="color: #4F200D;">Bio</label>
+                        <textarea class="form-control" name="input_bio" rows="3" placeholder="I am a...">{{user_profile.bio}}</textarea>
+                        
+                      </div>
+                    </div>
+  
+                    <!-- <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="password" id="form3Example4c" class="form-control" placeholder="Enter your password" name="password"/>
+                        <label class="form-label" for="form3Example4c">Password</label>
+                      </div>
+                    </div> -->
+                    <div class="d-flex flex-row align-items-center mb-3">
+                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-2">
+                          <label class="form-label pt-1 font-weight-bold h6" for="form3Example1c" style="color: #4F200D;">Location</label>
+                          <input type="text" id="form3Example4c" class="form-control" value="{{user_profile.location}}" placeholder="" name="location"/>
+                        </div>
+                    </div>
+
+
+  
+                    <div class="form-check d-flex justify-content-center mb-3">
+                      <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                        <button type="submit" class="btn" style="background-color: #4F200D; color: white;">Save</button>
+                      </div>
+                    </div>
+                  </form>
+                  
+                  <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                    <h6>First time? <a href="{% url 'signup' %}">Create an account</a> </h6>
+                  </div>
+
+                </div>
+                <!-- <div class="col-md-3">
+  
+                  <img src="{% static 'images/login_image.png' %} "
+                    class="img-fluid" alt="login-image">
+  
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+{% endblock content %}

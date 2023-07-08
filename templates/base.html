@@ -1,0 +1,116 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CodeCity</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    
+
+    <link rel="icon" type="image/x-icon" href="{% static 'images/site.png' %}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap" rel="stylesheet">
+
+  </head>
+  <body class="homebody">  
+    <div class="container-fluid">
+      <div class="row pt-3 pb-3 bg-dark">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 d-flex justify-content-center">
+          <a href="/" style="text-decoration: none;"><img src="{% static 'images/site.png' %}" alt="" width="60"></a>
+          <a href="/" style="text-decoration: none;"><span id="CodeCityLogo">CodeCity</span></a>
+        </div>
+        <div class="col-md-4 d-flex justify-content-center">
+          <!-- <form action="{% url 'signup' %}" method="POST">
+            {% csrf_token %}
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <input type="submit" class="btn btn-dark" value="Login"/>
+              <input type="submit" class="btn btn-dark" value="Sign up"/>
+            </div>
+          </form> -->
+
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <a href="{% url 'login' %}" class="btn btn-dark" style="height:fit-content;">Login</a>
+            <a href="{% url 'signup' %}" class="btn btn-dark" style="height:fit-content;">Sign up</a>
+            <a href="{% url 'vhome' %}" class="btn btn-dark" style="height:fit-content;">VJTI</a>
+          </div>
+
+          
+        </div>
+        
+      </div>
+    </div>
+
+    
+
+
+    {% block content %}
+    
+    {% endblock content %}
+
+     <!-- Footer -->
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+
+        <div class="col-md-4">
+          <hr class="end-line">
+        </div>
+
+        <div class="col-md-4 pt-1">
+          <h5 class="end-text">Error! Reached end of file while parsing</h5>
+        </div>
+
+        <div class="col-md-4">
+          <hr class="end-line">
+        </div>
+
+      </div>
+    </div>
+     <div class="container-fluid pt-4" style="background-color: #212529;">
+      <div class="row pt-4">
+        <div class="col-md-3"></div>
+
+        <div class="col-md-2 white-text">
+          <h4 style="text-align: center;"> Services </h4>
+          <a href="/algorithms/" style="text-decoration: none;"><p class="text-center">Some interesting algorithms</p></a>
+          <a href="/games/cvgames" style="text-decoration: none;"><p class="text-center">Play webcam games</p></a>
+          <a href="#" style="text-decoration: none;"><p class="text-center">Visit the blog</p></a>
+          <a href="/" style="text-decoration: none;"><p class="text-center">Home page</p></a>
+          <a href="{% url 'contact' %}" style="text-decoration: none;"><p class="text-center">Send us a message</p></a>
+        </div>
+
+        <div class="col-md-2 white-text">
+          <h4 style="text-align: center;"> Contact us </h4>
+          <p class="text-center">+91 8689918042 📞</p>
+          <p class="text-center">Khanda Colony, Panvel</p>
+          <p class="text-center"></p>
+        </div>
+
+        <div class="col-md-2 white-text">
+          <h4 style="text-align: center;"> Location </h4>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3772.203112609706!2d73.10806327492438!3d19.010769482180425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7e8358e66756b%3A0xb2ad9da3b61df8a9!2sNeelkanth%20Park!5e0!3m2!1sen!2sin!4v1687526718588!5m2!1sen!2sin" width="230" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+      <div class="row pt-2 justify-content-center">
+        <div class="col white-text text-center">
+          <h3>CodeCity</h3>
+          <p style="color: rgb(125, 125, 125);">CodeCity © 2023</p>
+        </div>
+      </div>
+    </div>
+    <!-- Footer end -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </body>
+</html>

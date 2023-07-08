@@ -1,0 +1,105 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CodeCity</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    
+
+    <link rel="icon" type="image/x-icon" href="{% static 'images/site.png' %}">
+
+  </head>
+  <body class="merch-body">  
+    
+    <div class="container-fluid">
+        <div class="row pb-1 pt-1" style="background-color: #FFD95A;">
+            <div class="col-md-2 merch-top text-center">
+              <a href="#"><strong style="color: #4C3D3D;">
+                CodeCity Merch</strong>
+              </a>
+            </div>
+
+            <div class="col-md-1 pt-1">
+              <a href="#">
+                <img src="{% static 'images/codecity-bag.png' %}" alt="bag" style="height: 40px;">
+              </a>
+            </div>
+
+            <div class="col-md-6 pt-1">
+              <div class="input-group ">
+                <input type="text" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                  <button class="btn search" type="button"><img src="{% static 'images/search-icon.png' %}" alt="" height="20px"></button>
+                </div>
+              </div> 
+            </div>
+
+            <div class="col-md-1 pt-1 text-center">
+              <button type="button" class="btn sign-in"> Sign in</button>
+            </div>
+
+            <div class="col-md-1">
+              <span>
+                <a href="#"alt=""><img src="{% static 'images/cart.png' %}">
+                </a>
+              </span>
+              <span class="cart-count">0</span>
+              <a href="#"><span style="color: #4C3D3D; font-size: 17px; font-weight: 700; position: relative; right: 12%;">Cart</span></a>
+            </div>
+        </div>
+        
+        <!-- Container -->
+    </div>
+
+    {% block content %}
+    
+    {% endblock content %}
+
+    <!-- Footer -->
+    <div class="container-fluid" style="background-color: black;">
+      <div class="row pt-4">
+        <div class="col-md-3"></div>
+
+        <div class="col-md-2 white-text">
+          <h4 style="text-align: center;"> Services </h4>
+          <a href="/algorithms/" style="text-decoration: none;"><p class="text-center">Some interesting algorithms</p></a>
+          <a href="/games/cvgames" style="text-decoration: none;"><p class="text-center">Play webcam games</p></a>
+          <a href="#" style="text-decoration: none;"><p class="text-center">Visit the blog</p></a>
+          <a href="/" style="text-decoration: none;"><p class="text-center">Home page</p></a>
+        </div>
+
+        <div class="col-md-2 white-text">
+          <h4 style="text-align: center;"> Contact us </h4>
+          <p class="text-center">+91 8689918042 📞</p>
+          <p class="text-center">Panvel</p>
+        </div>
+
+        <div class="col-md-2 white-text">
+          <h4 style="text-align: center;"> Location </h4>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3772.203112609706!2d73.10806327492438!3d19.010769482180425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7e8358e66756b%3A0xb2ad9da3b61df8a9!2sNeelkanth%20Park!5e0!3m2!1sen!2sin!4v1687526718588!5m2!1sen!2sin" width="230" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+      <div class="row pt-2 justify-content-center">
+        <div class="col white-text text-center">
+          <h3>CodeCity</h3>
+          <p style="color: rgb(125, 125, 125);">CodeCity © 2023</p>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+body{
+    background-color: #F6F1E9;
+}
+
+.cp-title{
+    color: #FFD93D;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 50px;
+}
+
+.profile-img{
+    height: 35px;
+    align-items: center;
+}
+
+.drop-tags{
+    text-align: center;
+    width: 25px;
+}

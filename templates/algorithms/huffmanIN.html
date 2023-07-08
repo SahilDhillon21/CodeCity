@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4 ">
+            <p style="color: aliceblue;">HUFFMANNN <br></p>
+    
+            <h3 style="color: aliceblue;">Copy paste your text below.</h3>
+    
+            <form action="huffmanOUT/" method="get">
+                <textarea name="input" id="" cols="100" rows="20" ></textarea>
+                <button type="submit">Compress</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

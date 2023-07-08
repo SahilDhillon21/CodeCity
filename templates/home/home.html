@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <div>
+        <style>
+          h5{
+            text-align: center;
+          }
+          .info{
+            color: red;
+          }
+
+          .success{
+            color: green;
+          }
+        </style>
+        {% for message in messages %}
+        <h5 class="{{message.tags}}">{{message}}</h5>
+        {% endfor %}
+      </div>
+
+    <div class="row">
+        <div class="col-md-12 d-flex justify-content-center pt-2">
+            <p class="glow-text"> Explore </p>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="FrontCard">
+                <p style="text-align: center; font-size: 50px;" class="glow-text">Algorithms</p>
+                <a href="/algorithms/huffmanIN/" style="text-decoration: none;"><p style="text-align: center;" class="glow-text-dark">Huffman Compression🗜️</p></a>
+                <a href="#" style="text-decoration: none;"><p style="text-align: center;" class="glow-text-dark">Turing Machine⬇️</p></a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="FrontCard">
+                <a href="{% url 'cvgames' %}" style="text-decoration: none;"><p style="text-align: center; font-size: 50px;" class="glow-text">CVgames</p></a>
+                <a href="{% url 'airhockeySummary' %}" style="text-decoration: none;"><p style="text-align: center;" class="glow-text-dark">Air Hockey⚪</p></a>
+                <a href="#" style="text-decoration: none;"><p style="text-align: center;" class="glow-text-dark">Air Piano🎹</p></a>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="FrontCard">
+                <a href="merchandise" style="text-decoration: none;"><p style="text-align: center; font-size: 50px;" class="glow-text">Merchandise</p></a>
+                <a href="#" style="text-decoration: none;"><p style="text-align: center;" class="glow-text-dark">Cool T-shirts,
+                    <br>miniatures and more🛍️</p></a>
+            </div>
+        </div>
+
+        <div class="row pt-4 pb-4 justify-content-center">
+            <div class="col-md-12">
+                <div class="FrontCard">
+                    <a href="{% url 'codepubHome' %}" style="text-decoration: none;">
+                        <h4 class="glow-text-violet pt-3">CodePub</h4>
+                    </a>
+
+                    <p style="text-align: center;" class="glow-text-dark">Stay up to date with the tech world and interact with other 
+                    nerds just like you! <br> 🤓</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+{% endblock content %}
