@@ -23,6 +23,7 @@ class Profile(models.Model):
     bio = models.TextField(max_length=1000, blank=True)
     profileimg = models.ImageField(upload_to='profile_images',default='Default-avatar.jpg')
     location = models.CharField(max_length=100,blank=True)
+    attendants = models.IntegerField(default=0)
 
     def __str__(self):
         return self.user.username
