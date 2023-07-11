@@ -3,6 +3,15 @@
 {% include 'codepubbase.html' %}
 {% block content %}
     
-    <p>CodePub home</p>
+    <div class="container-fluid mt-5">
+        <div class="row">
+            <div class="col-md-8 text-center right-border">
+                <h3>Option to create new post</h3>
+            </div>
+            <div class="col-md-4 mt-5">
+                {% include 'codepub/side.html' %}
+            </div>
+        </div>
+    </div>
 
 {% endblock content %}

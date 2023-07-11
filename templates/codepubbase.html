@@ -26,7 +26,7 @@
                     <a href="{% url 'profile' %}" type="button" class="btn dropdown-toggle btn-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
                       <!-- <img src="{% static 'images/Default-avatar.jpg' %}" class="profile-img pb-2" alt="profile-pic"> -->
                       <img src="{{user_profile.profileimg.url}}" class="profile-img pb-2" alt="profile-pic">
-                      <span style="color: #FFD93D;">{{user_profile.user}}</span>
+                      <span style="color: #FFD93D; text-transform: none;">{{user_profile.user}}</span>
                     </a>
                     
 
