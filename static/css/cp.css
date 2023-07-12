@@ -4,6 +4,11 @@ body{
     background-color: #F6F1E9;
 }
 
+
+.accordion-button:after {
+    display: none;
+}
+
 .cp-title{
     color: #FFD93D;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -20,12 +25,14 @@ body{
     width: 25px;
 }
 
-.right-border{
-    border-right: 2px solid #4F200D;;
+.left-border{
+    border-left: 2px solid #4F200D;;
 }
 
 /* side.html */
 .rec-followers{
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+
+
 

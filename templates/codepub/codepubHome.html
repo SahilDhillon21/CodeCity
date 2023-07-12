@@ -5,10 +5,35 @@
     
     <div class="container-fluid mt-5">
         <div class="row">
-            <div class="col-md-8 text-center right-border">
-                <h3>Option to create new post</h3>
+            <div class="col-md-7 offset-1 text-center ">
+                <h3 style="color: black;">Your feed</h3>
+                <div class="accordion accordion-borderless h-auto" id="accordionExampleY" >
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingOneY">
+                        <button class="accordion-button d-block text-center" type="button" data-mdb-toggle="collapse"
+                          data-mdb-target="#collapseOneY" aria-expanded="true" aria-controls="collapseOneY"
+                          style="color: white; background-color: black;">
+                          <i class="far fa-square-plus"></i> &nbsp <strong>Create new post</strong>
+                        </button>
+                      </h2>
+                      <div id="collapseOneY" class="accordion-collapse collapse" aria-labelledby="headingOneY"
+                        data-mdb-parent="#accordionExampleY">
+                        <div class="accordion-body">
+                          <strong>This is the first item's accordion body.</strong> It is hidden by
+                          default, until the collapse plugin adds the appropriate classes that we use to
+                          style each element. These classes control the overall appearance, as well as
+                          the showing and hiding via CSS transitions. You can modify any of this with
+                          custom CSS or overriding our default variables. It's also worth noting that
+                          just about any HTML can go within the <code>.accordion-body</code>, though the
+                          transition does limit overflow.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- post option end -->
+
             </div>
-            <div class="col-md-4 mt-5">
+            <div class="col-md-4 mt-5 left-border">
                 {% include 'codepub/side.html' %}
             </div>
         </div>
