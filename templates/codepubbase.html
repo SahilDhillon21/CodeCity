@@ -14,15 +14,16 @@
     <title>CodePub</title>
   </head>
   <body>
-
     <div class="container-fluid">
         <div class="row pt-2 pb-2" style="background-color: #4F200D;">
             <div class="col-md-4"></div>
             <div class="col-md-4 text-center">
                 <a href="{% url 'codepubHome' %}" style="text-decoration: none"><strong class="cp-title">CodePub</strong></a>
             </div>
+
             <div class="col-md-4 text-center">
-                <div class="btn-group btn-group-lg mt-3">
+                {% if user.is_authenticated %}
+                  <div class="btn-group btn-group-lg mt-3">
                     <a href="{% url 'profile' %}" type="button" class="btn dropdown-toggle btn-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
                       <!-- <img src="{% static 'images/Default-avatar.jpg' %}" class="profile-img pb-2" alt="profile-pic"> -->
                       <img src="{{user_profile.profileimg.url}}" class="profile-img pb-2" alt="profile-pic">
@@ -31,16 +32,35 @@
                     
 
                     <div class="dropdown-menu">
-                      <a class="dropdown-item" href="{% url 'profile' %}"><img src="{% static 'images/profile-tag.png' %}" class="drop-tags" alt="">&nbsp Profile</a>
-                      <a class="dropdown-item" href="#"><img src="{% static 'images/help-tag.png' %}" class="drop-tags" alt="">&nbsp Help</a>
+                      <a class="dropdown-item" href="{% url 'profile' %}"><img src="{% static 'images/profile-tag.png' %}" class="drop-tags" alt="">  Profile</a>
+                      <a class="dropdown-item" href="#"><img src="{% static 'images/help-tag.png' %}" class="drop-tags" alt=""> Help</a>
+                      <a class="dropdown-item" href="{% url 'codepubHome' %}">
+                        <img src="{% static 'images/plus.gif' %}" class="drop-tags" alt="plus-icon">
+                         Create post</a>
                       
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item text-danger" href="{% url 'logout' %}"><img src="{% static 'images/logout-tag.png' %}" class="drop-tags" alt=""> 
-                         Logout</a>
+                        Logout</a>
+                    </div>
+
+                    <!-- log in button OR user profile options -->
+                  </div>
+                {% else %}
+                  <div class="btn-group btn-group-lg mt-4">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                      <a href="{% url 'login' %}" class="btn btn-warning" style="height:fit-content;">Login</a>
+                      <a href="{% url 'signup' %}" class="btn btn-warning" style="height:fit-content;">Sign up</a>
                     </div>
                   </div>
+
+                {% endif %}
+                  <!-- column -->
             </div>
+
+            <!-- row -->
         </div>
+
+        <!-- container -->
     </div>
 
 

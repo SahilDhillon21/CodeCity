@@ -7,8 +7,8 @@
         <div class="row">
             <div class="col-md-7 offset-1 text-center ">
                 <h3 style="color: black;">Your feed</h3>
-                <div class="accordion accordion-borderless h-auto" id="accordionExampleY" >
-                    <div class="accordion-item">
+                <div class="accordion accordion-borderless h-auto open" id="accordionExampleY" >
+                    <div class="accordion-item ">
                       <h2 class="accordion-header" id="headingOneY">
                         <button class="accordion-button d-block text-center" type="button" data-mdb-toggle="collapse"
                           data-mdb-target="#collapseOneY" aria-expanded="true" aria-controls="collapseOneY"
@@ -16,16 +16,45 @@
                           <i class="far fa-square-plus"></i> &nbsp <strong>Create new post</strong>
                         </button>
                       </h2>
-                      <div id="collapseOneY" class="accordion-collapse collapse" aria-labelledby="headingOneY"
+                      <div id="collapseOneY" class="accordion-collapse collapse show" aria-labelledby="headingOneY"
                         data-mdb-parent="#accordionExampleY">
                         <div class="accordion-body">
-                          <strong>This is the first item's accordion body.</strong> It is hidden by
-                          default, until the collapse plugin adds the appropriate classes that we use to
-                          style each element. These classes control the overall appearance, as well as
-                          the showing and hiding via CSS transitions. You can modify any of this with
-                          custom CSS or overriding our default variables. It's also worth noting that
-                          just about any HTML can go within the <code>.accordion-body</code>, though the
-                          transition does limit overflow.
+                            {% if user.is_authenticated %}
+
+                            <form>
+                                {% csrf_token %}
+                                <!-- Post title  -->
+                                <div class="form-outline mb-4">
+                                  <input type="text" id="form5Example1" class="form-control" />
+                                  <label class="form-label" for="form5Example1">Title</label>
+                                </div>
+                              
+                                <!-- Caption  -->
+                                <div class="form-outline mb-4">
+                                  <input type="text" id="form5Example2" class="form-control" />
+                                  <textarea name="caption" id="" cols="30" class="form-control" rows="5"></textarea>
+                                  <label class="form-label" for="form5Example2">Caption</label>
+                                </div>
+
+
+                                {% comment %} File upload {% endcomment %}
+                                <div class="form-outline mb-4 text-center">
+                                    <input type="file" name="post-file" id="">
+                                  </div>
+                                
+
+                                <!-- Submit button -->
+                                <button type="submit" class="btn btn-dark btn-inline mb-4"> 
+                                    <i class="fas fa-circle-check"></i>&nbsp Post
+                                </button>
+
+                                
+
+                              </form>
+
+                            {% else %}
+                                <p>You need to <strong><a href="{% url 'login' %}">log in</a></strong> to be able to post.</p>
+                            {% endif %}
                         </div>
                       </div>
                     </div>

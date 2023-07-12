@@ -4,7 +4,7 @@ from django.contrib import messages
 from home.models import Profile
 # Create your views here.
 
-@login_required(login_url='login')
+# @login_required(login_url='login')
 def codepubHome(request):
     return render(request,'codepub/codepubHome.html')
 
@@ -36,5 +36,3 @@ def profile(request):
     context = {'user_profile':user_profile}
     return render (request,'codepub/profile.html',context)
 
-def createPost(request):
-    return render(request,'codepub/createPost.html')
