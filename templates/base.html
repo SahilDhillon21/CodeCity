@@ -68,11 +68,38 @@
                 <span class="visually-hidden">Toggle Dropdown</span>
               </button>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li>
+                  
+                  <a class="dropdown-item" href="{% url 'profile' %}"><img src="{% static 'images/c.png' %}" class="drop-tags" alt=""> 
+                     <strong>Profile</strong>
+                  </a>
+                
+                </li>
+
+                <li>
+                  
+                  <a class="dropdown-item" href="{% url 'profile' %}">
+                    <img src="{% static 'images/Clogout.png' %}" class="drop-tags" alt="">  
+                    <strong>Settings</strong>
+                  </a>
+                
+                </li>
+
+                <li>
+                  
+                  <a class="dropdown-item" href="{% url 'profile' %}">
+                    <img src="{% static 'images/Creward.png' %}" class="drop-tags" alt="">  
+                    <strong>Rewards</strong>
+                  </a>
+                
+                </li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
+
+                <a class="dropdown-item" href="{% url 'profile' %}">
+                    <img src="{% static 'images/Clogout.png' %}" class="drop-tags" alt=""> 
+                    <strong style="color: red;">Logout</strong>
+                </a>
+                
               </ul>
             </div>
 

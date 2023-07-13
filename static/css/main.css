@@ -21,6 +21,14 @@
   width: 25px;
 }
 
+#profile-options-button{
+    text-decoration: none;
+    color: #000;
+}
+#profile-options-button:hover{
+    color: #ffffff;
+}
+
 @keyframes glow{
     100%{
         text-shadow: 
