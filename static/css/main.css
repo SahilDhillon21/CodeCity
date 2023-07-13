@@ -11,6 +11,16 @@
     animation: glow 0.5s ease-in-out infinite alternate-reverse;
 }
 
+.profile-img{
+  height: 35px;
+  align-items: center;
+}
+
+.drop-tags{
+  text-align: center;
+  width: 25px;
+}
+
 @keyframes glow{
     100%{
         text-shadow: 

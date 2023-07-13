@@ -37,11 +37,53 @@
             </div>
           </form> -->
 
-          <div class="btn-group" role="group" aria-label="Basic example">
-            <a href="{% url 'login' %}" class="btn btn-dark" style="height:fit-content;">Login</a>
-            <a href="{% url 'signup' %}" class="btn btn-dark" style="height:fit-content;">Sign up</a>
-            <a href="{% url 'vhome' %}" class="btn btn-dark" style="height:fit-content;">VJTI</a>
-          </div>
+          {% if user.is_authenticated %}
+
+            <!-- {% comment %} <div class="btn-group btn-group-lg mt-3">
+            <button type="button" class="btn dropdown-toggle btn-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
+              <img src="{{user_profile.profileimg.url}}" class="profile-img pb-2" alt="profile-pic">
+              <span style="color: #FFD93D; text-transform: none;">{{user_profile.user}}</span>
+            </button>
+            
+
+            <div class="dropdown-menu">
+
+              <a class="dropdown-item" href="{% url 'profile' %}"><img src="{% static 'images/profile-tag.png' %}" class="drop-tags" alt="">  Profile</a>
+
+              <a class="dropdown-item" href="#"><img src="{% static 'images/help-tag.png' %}" class="drop-tags" alt=""> Help</a>
+              
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item text-danger" href="{% url 'logout' %}"><img src="{% static 'images/logout-tag.png' %}" class="drop-tags" alt=""> 
+                Logout</a>
+            </div> {% endcomment %} -->
+
+            <div class="btn-group">
+              <button type="button" class="btn btn-outline-light" style="border-radius: 0%;">
+                <a href="{% url 'profile' %}">
+                  <img src="{{user_profile.profileimg.url}}" alt="" class="profile-img d-inline">
+                  <span class="d-inline white-text">{{user_profile.user}}</span>
+                </a>
+              </button>
+              <button type="button" class="btn btn-outline-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="visually-hidden">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Separated link</a></li>
+              </ul>
+            </div>
+
+          {% else %}
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <a href="{% url 'login' %}" class="btn btn-dark" style="height:fit-content;">Login</a>
+              <a href="{% url 'signup' %}" class="btn btn-dark" style="height:fit-content;">Sign up</a>
+              <a href="{% url 'vhome' %}" class="btn btn-dark" style="height:fit-content;">VJTI</a>
+            </div>
+
+          {% endif %}
 
           
         </div>
@@ -94,9 +136,10 @@
           <p class="text-center"></p>
         </div>
 
-        <div class="col-md-2 white-text">
+        <div class="col-md-2 white-text text-center">
           <h4 style="text-align: center;"> Location </h4>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3772.203112609706!2d73.10806327492438!3d19.010769482180425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7e8358e66756b%3A0xb2ad9da3b61df8a9!2sNeelkanth%20Park!5e0!3m2!1sen!2sin!4v1687526718588!5m2!1sen!2sin" width="230" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3772.203112609706!2d73.10806327492438!3d19.010769482180425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7e8358e66756b%3A0xb2ad9da3b61df8a9!2sNeelkanth%20Park!5e0!3m2!1sen!2sin!4v1687526718588!5m2!1sen!2sin" width="230" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          class="text-center"></iframe>
         </div>
       </div>
 
