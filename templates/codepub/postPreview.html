@@ -1,8 +1,8 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-auto">
-            <div class="card">
-                <div class="card-body">
+        <div class="col ">
+            <div class="card ">
+                <div class="card-body post-shadow">
                   <h5 class="card-title text-center">Post preview</h5>
                   <p class="card-text">
                     <div class="container-fluid">
@@ -10,19 +10,26 @@
                             <div class="col-auto">
                                 <img src="{{user_profile.profileimg.url}}" class="profile-img" alt="user-pic">
                             </div>
-                            <div class="col-md-2 mt-2 px-0">
+                            <div class="col-auto mt-2 px-0">
                                 <strong><p>{{user_profile.user}} </p></strong>
                             </div>
                         </div>
                     </div>
                     <div class="row mb-2">
+                        <div class="col-auto">
+                            <strong id="preview-title" 
+                            style="color: black;">
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
                         <div class="col text-center">
-                            <!-- <img src="{{user_profile.profileimg.url}}" alt="" srcset=""> -->
+                            <img src="" id="preview-image" alt="" class="img-responsive" style="width: 100%;">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col" style="text-align: justify; color: black;">
-                            <p>Caption Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus ipsum perspiciatis, saepe neque molestias quibusdam, quidem optio est, dicta quisquam vero sequi sapiente beatae mollitia quas facilis reiciendis id voluptas praesentium quo repudiandae. Ullam deleniti tenetur accusamus dicta dolorem. Unde saepe nostrum cumque doloremque asperiores similique facere aliquam sunt doloribus?</p>
+                            <p id="preview-caption"></p>
                         </div>
                     </div>
                   </p>

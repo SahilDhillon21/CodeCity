@@ -25,30 +25,35 @@
                                 {% csrf_token %}
                                 <!-- Post title  -->
                                 <div class="form-outline mb-4">
-                                  <input type="text" id="form5Example1" class="form-control" />
+                                  <input type="text" id="title-input" class="form-control" maxlength="200" />
                                   <label class="form-label" for="form5Example1">Title</label>
                                 </div>
                               
                                 <!-- Caption  -->
                                 <div class="form-outline mb-4">
-                                  <input type="text" id="form5Example2" class="form-control" />
-                                  <textarea name="caption" id="" cols="30" class="form-control" rows="5"></textarea>
+                                  <textarea name="caption" id="caption-input" cols="30" class="form-control" rows="5"></textarea>
                                   <label class="form-label" for="form5Example2">Caption</label>
                                 </div>
 
 
                                 <!-- File upload -->
                                 <div class="form-outline mb-4 text-center">
-                                    <input type="file" name="create-post-image" id="upImage" accept="image/*">Upload image
+                                    <input type="file" name="image-input" id="image-input" accept="image/*">Upload image
                                   </div>
                                 
                                 <!-- Show preview of post -->
 
                                 {% include 'codepub/postPreview.html' %}
                                 <!-- Submit button -->
-                                <button type="submit" class="btn btn-dark btn-block mb-4 text-center"> 
-                                    <i class="fas fa-circle-check"></i>&nbsp Post
-                                </button>
+                                <div class="container-fluid pt-5">
+                                  <div class="row justify-content-center">
+                                    <div class="col-auto">
+                                      <button type="submit" class="btn btn-dark btn-block mb-4 text-center"> 
+                                        <i class="fas fa-circle-check"></i>&nbsp Post
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
 
                                 
 
