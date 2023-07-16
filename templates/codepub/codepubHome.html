@@ -4,6 +4,13 @@
 {% block content %}
     
     <div class="container-fluid mt-5">
+                  {% for message in messages %}
+                  <div class="row justify-content-center">
+                    <div class="col-auto">
+                      <h4 style="color: green;">Posted successfully</h4>
+                    </div>
+                  </div>
+                  {% endfor %}
         <div class="row">
             <div class="col-md-7 offset-1  ">
                 <h3 style="color: black;">Your feed</h3>
@@ -21,17 +28,17 @@
                         <div class="accordion-body">
                             {% if user.is_authenticated %}
 
-                            <form>
+                            <form action="{% url 'codepubHome' %}" method="post">
                                 {% csrf_token %}
                                 <!-- Post title  -->
                                 <div class="form-outline mb-4">
-                                  <input type="text" id="title-input" class="form-control" maxlength="200" />
+                                  <input type="text" id="title-input" name="title-input" class="form-control" minlength="3" maxlength="200" />
                                   <label class="form-label" for="form5Example1">Title</label>
                                 </div>
                               
                                 <!-- Caption  -->
                                 <div class="form-outline mb-4">
-                                  <textarea name="caption" id="caption-input" cols="30" class="form-control" rows="5"></textarea>
+                                  <textarea name="caption-input" maxlength="15000" id="caption-input" minlength="3" cols="30" class="form-control" rows="5"></textarea>
                                   <label class="form-label" for="form5Example2">Caption</label>
                                 </div>
 
@@ -67,12 +74,6 @@
                     </div>
                   </div>
                   <!-- post option end -->
-
-                  <div class="row justify-content-center">
-                    <div class="col">
-                      
-                    </div>
-                  </div>
 
             </div>
             <div class="col-md-4 mt-5 left-border">

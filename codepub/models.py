@@ -10,10 +10,10 @@ User = get_user_model()
 
 class Post(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
-    title = models.CharField(max_length=150)
-    user =  models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='post_images')
-    caption = models.TextField(max_length=10000)
+    title = models.CharField(max_length=200)
+    user =  models.ForeignKey(User, on_delete=models.CASCADE)       
+    image = models.ImageField(upload_to='post_images',default=None)
+    caption = models.TextField(max_length=15000)
     created_at = models.DateTimeField(default=datetime.now)
     likes = models.IntegerField(default=0)
 

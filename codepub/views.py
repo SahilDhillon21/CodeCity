@@ -2,10 +2,25 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from home.models import Profile
+from codepub.models import Post
 # Create your views here.
 
 # @login_required(login_url='login')
 def codepubHome(request):
+    # For processing post data
+    if request.method == 'POST':
+        user = request.user
+        title = request.POST['title-input']
+        caption = request.POST['caption-input']
+        image = request.FILES.get('image-input',None)
+
+        new_post = Post.objects.create(title=title, user = user, image = image, caption = caption,likes=0)
+        new_post.save()
+
+        messages.info(request,"Post created successfully")
+
+
+
     return render(request,'codepub/codepubHome.html')
 
 @login_required(login_url='login')
