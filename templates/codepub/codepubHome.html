@@ -5,7 +5,7 @@
     
     <div class="container-fluid mt-5">
         <div class="row">
-            <div class="col-md-7 offset-1 text-center ">
+            <div class="col-md-7 offset-1  ">
                 <h3 style="color: black;">Your feed</h3>
                 <div class="accordion accordion-borderless h-auto open" id="accordionExampleY" >
                     <div class="accordion-item ">
@@ -37,14 +37,16 @@
                                 </div>
 
 
-                                {% comment %} File upload {% endcomment %}
+                                <!-- File upload -->
                                 <div class="form-outline mb-4 text-center">
-                                    <input type="file" name="post-file" id="">
+                                    <input type="file" name="create-post-image" id="upImage" accept="image/*">Upload image
                                   </div>
                                 
+                                <!-- Show preview of post -->
 
+                                {% include 'codepub/postPreview.html' %}
                                 <!-- Submit button -->
-                                <button type="submit" class="btn btn-dark btn-inline mb-4"> 
+                                <button type="submit" class="btn btn-dark btn-block mb-4 text-center"> 
                                     <i class="fas fa-circle-check"></i>&nbsp Post
                                 </button>
 
@@ -60,6 +62,12 @@
                     </div>
                   </div>
                   <!-- post option end -->
+
+                  <div class="row justify-content-center">
+                    <div class="col">
+                      
+                    </div>
+                  </div>
 
             </div>
             <div class="col-md-4 mt-5 left-border">
