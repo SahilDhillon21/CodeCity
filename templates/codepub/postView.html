@@ -1,0 +1,43 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col ">
+            <div class="card ">
+                <div class="card-body post-shadow">
+                  <p class="card-text">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-auto">
+                                <img src="{{ user_profile.profileimg }}" class="profile-img" alt="user-pic">
+                            </div>
+                            <div class="col-auto mt-2 px-0" style="color: rgb(105, 63, 0);">
+                                <strong><p>{{ post.user.username }}</p></strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-auto">
+                            <strong id="preview-title" 
+                            style="color: black;">{{ post.title }}
+                            </strong>
+                        </div>
+                    </div>
+                    {% if post.image %}
+                        <div class="row mb-2">
+                            <div class="col text-center">
+                                <img src="{{ post.image.url }}" id="preview-image" alt="" class="img-responsive" style="max-width: 80%;">
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    <div class="row">
+                        <div class="col" style="text-align: justify; color: black;">
+                            <p id="preview-caption"></p>
+                        </div>
+                    </div>
+                  </p>
+                  Like Share Message Repost
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

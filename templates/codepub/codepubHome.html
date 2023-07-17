@@ -1,16 +1,7 @@
 {% extends 'codepubbase.html' %}
-
-{% include 'codepubbase.html' %}
 {% block content %}
     
     <div class="container-fluid mt-5">
-                  {% for message in messages %}
-                  <div class="row justify-content-center">
-                    <div class="col-auto">
-                      <h4 style="color: green;">Posted successfully</h4>
-                    </div>
-                  </div>
-                  {% endfor %}
         <div class="row">
             <div class="col-md-7 offset-1  ">
                 <h3 style="color: black;">Your feed</h3>
@@ -23,7 +14,7 @@
                           <i class="far fa-square-plus"></i> &nbsp <strong>Create new post</strong>
                         </button>
                       </h2>
-                      <div id="collapseOneY" class="accordion-collapse collapse show" aria-labelledby="headingOneY"
+                      <div id="collapseOneY" class="accordion-collapse collapse" aria-labelledby="headingOneY"
                         data-mdb-parent="#accordionExampleY">
                         <div class="accordion-body">
                             {% if user.is_authenticated %}
@@ -72,8 +63,13 @@
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <!-- post option end -->
+                </div>
+                <!-- post option end -->
+
+                <!-- Displaying all posts -->
+                {% for post in allPosts %}
+                  {% include 'codepub/postView.html' %}
+                {% endfor %}
 
             </div>
             <div class="col-md-4 mt-5 left-border">

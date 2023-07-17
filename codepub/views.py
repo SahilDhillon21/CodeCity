@@ -19,9 +19,10 @@ def codepubHome(request):
 
         messages.info(request,"Post created successfully")
 
-
-
-    return render(request,'codepub/codepubHome.html')
+    allPosts = Post.objects.all()
+    context = {'allPosts':allPosts}
+    
+    return render(request,'codepub/codepubHome.html',context)
 
 @login_required(login_url='login')
 def profile(request):
