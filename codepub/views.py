@@ -9,12 +9,12 @@ from codepub.models import Post
 def codepubHome(request):
     # For processing post data
     if request.method == 'POST':
-        user = request.user
+        user = request.user.username
         title = request.POST['title-input']
         caption = request.POST['caption-input']
-        image = request.FILES.get('image-input',None)
+        image = request.FILES.get('image-input')
 
-        new_post = Post.objects.create(title=title, user = user, image = image, caption = caption,likes=0)
+        new_post = Post.objects.create(title=title,user=user, image = image, caption = caption)
         new_post.save()
 
         messages.info(request,"Post created successfully")
