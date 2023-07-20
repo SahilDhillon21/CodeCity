@@ -19,7 +19,7 @@
                         <div class="accordion-body">
                             {% if user.is_authenticated %}
 
-                            <form action="{% url 'codepubHome' %}" method="post">
+                            <form action="{% url 'codepubHome' %}" method="post" enctype="multipart/form-data">
                                 {% csrf_token %}
                                 <!-- Post title  -->
                                 <div class="form-outline mb-4">
@@ -67,7 +67,7 @@
                 <!-- post option end -->
 
                 <!-- Displaying all posts -->
-                {% for post in allPosts %}
+                {% for post in allPosts reversed %}
                   {% include 'codepub/postView.html' %}
                 {% endfor %}
 

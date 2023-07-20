@@ -11,6 +11,11 @@
     animation: glow 0.5s ease-in-out infinite alternate-reverse;
 }
 
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
 .profile-img{
   height: 35px;
   align-items: center;

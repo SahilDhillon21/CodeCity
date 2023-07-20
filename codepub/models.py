@@ -18,4 +18,4 @@ class Post(models.Model):
     likes = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.user.username
+        return self.user
