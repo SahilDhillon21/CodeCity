@@ -17,5 +17,10 @@ class Post(models.Model):
     created_at = models.DateTimeField(default=datetime.now)
     likes = models.IntegerField(default=0)
 
+    class Meta:
+        ordering = ['created_at']
+
     def __str__(self):
-        return self.user
+        return self.user+" - "+self.title
+    
+
