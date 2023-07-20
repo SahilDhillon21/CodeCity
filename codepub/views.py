@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.contrib import messages
 from home.models import Profile
 from codepub.models import Post, LikePost
@@ -73,3 +74,17 @@ def like_post(request):
         post.save()
         return redirect(codepubHome)
 
+@login_required(login_url='login')
+def view_profile(request,pk):
+    viewed_user_object = User.objects.get(username=pk)
+    viewed_user_profile = Profile.objects.get(user=viewed_user_object)
+    viewed_user_posts = Post.objects.filter(user=pk)
+    viewed_user_posts_length = len(viewed_user_posts)
+
+    context = {
+        'viewed_user_object':viewed_user_object,
+        'viewed_user_profile':viewed_user_profile,
+        'viewed_user_posts':viewed_user_posts,
+        'viewed_user_posts_length':viewed_user_posts_length
+    }
+    return render(request,'codepub/view-profile.html',context)
