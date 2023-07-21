@@ -81,11 +81,33 @@ def view_profile(request,pk):
     viewed_user_posts = Post.objects.filter(user=pk)
     viewed_user_posts_length = len(viewed_user_posts)
 
+    follower = request.user.username
+    user = pk
+
+    if FollowAccount.objects.filter(follower=follower, user = user).first():
+        follow_text = "Unfollow"
+    else:
+        follow_text = "Follow"
+
+    viewed_user_followers = FollowAccount.objects.filter(user=pk).all()
+    no_of_followers = len(viewed_user_followers)
+
+    viewed_users_following = FollowAccount.objects.filter(follower=pk).all()
+    no_of_persons_followed = len(viewed_users_following)
+    
+
+
+
     context = {
         'viewed_user_object':viewed_user_object,
         'viewed_user_profile':viewed_user_profile,
         'viewed_user_posts':viewed_user_posts,
-        'viewed_user_posts_length':viewed_user_posts_length
+        'viewed_user_posts_length':viewed_user_posts_length,
+        'follow_text':follow_text,
+        'viewed_user_followers':viewed_user_followers,
+        'no_of_followers':no_of_followers,
+        'viewed_users_following':viewed_users_following,
+        'no_of_persons_followed':no_of_persons_followed
     }
     return render(request,'codepub/view-profile.html',context)
 

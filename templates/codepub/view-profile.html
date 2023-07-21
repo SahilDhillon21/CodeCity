@@ -45,9 +45,9 @@
                         Profile settings
                       </a>
                     {% else %}
-                      <a href="/follow/{{viewed_user_object.username}}">
-                        Follow
-                      </a>
+                    <a href="/follow/{{viewed_user_object.username}}">
+                      {{follow_text}}
+                    </a>
                     {% endif %}
                     <h5>{{viewed_user_profile.user.username}}</h5>
                     <p>{{viewed_user_profile.location}}</p>
@@ -73,11 +73,17 @@
 
                     </div>
                     <div class="px-3">
-                      <p class="mb-1 h5">1026</p>
-                      <p class="small text-muted mb-0">Followers</p>
+                      <p class="mb-1 h5">{{no_of_followers}}</p>
+                      <p class="small text-muted mb-0">
+                        {% if no_of_followers != 1 %}
+                          Followers
+                        {% else %}
+                          Follower
+                        {% endif %}
+                      </p>
                     </div>
                     <div>
-                      <p class="mb-1 h5">478</p>
+                      <p class="mb-1 h5">{{no_of_persons_followed}}</p>
                       <p class="small text-muted mb-0">Following</p>
                     </div>
                   </div>
@@ -89,6 +95,29 @@
                       <p class="font-italic mb-1">{{viewed_user_profile.bio}}</p>
                     </div>
                   </div>
+
+                  {% if no_of_persons_followed > 0 %}
+                  <p><strong>{{viewed_user_profile.user.username}}</strong> follows 
+                    {% for person in viewed_users_following %}
+                      <span><strong>{{person.user}} </strong></span>
+                    {% endfor %}
+                  </p>
+                  {% else %}
+                    <p><strong>{{viewed_user_profile.user.username}}</strong> does not follow anyone yet
+                    </p>
+                  {% endif %}
+
+                  {% if no_of_followers > 0 %}
+                  <p><strong>{{viewed_user_profile.user.username}}</strong> is followed by 
+                    {% for person in viewed_user_followers %}
+                      <strong><span>{{person.follower}} </span></strong>
+                    {% endfor %}
+                  </p>
+                  {% else %}
+                    <p><strong>{{viewed_user_profile.user.username}}</strong> has no followers as of now
+                    </p>
+                  {% endif %}
+
                   <div class="d-flex justify-content-between align-items-center mb-4">
                     <p class="lead fw-normal mb-0">Recent posts</p>
                   </div>
