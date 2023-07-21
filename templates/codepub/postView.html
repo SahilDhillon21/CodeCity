@@ -42,7 +42,10 @@
                   <a href="{% url 'like-post' %}?post_id={{post.id}}">
                     <img src="{% static 'images/like.png' %}" class="profile-img"  alt="">
                     <span style="color: black; font-size: 20px;" class="align-middle">{{post.likes}}</span>
-                    </a>
+                  </a>
+                  {% if post.image %}
+                    <a href="{{post.image.url}}" download>Download</a>
+                  {% endif %}
                 </div>
             </div>
         </div>
