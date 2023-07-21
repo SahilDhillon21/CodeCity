@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from home.models import Profile
 from codepub.models import Post, LikePost, FollowAccount
+from itertools import chain 
 # Create your views here.
 
 # @login_required(login_url='login')
@@ -20,8 +21,22 @@ def codepubHome(request):
 
         messages.info(request,"Post created successfully")
 
-    allPosts = Post.objects.all()
-    context = {'allPosts':allPosts}
+
+    user_following_list = []
+    feed = []
+
+    user_following = FollowAccount.objects.filter(follower=request.user.username)
+
+    for user in user_following:
+        user_following_list.append(user.user)
+
+    for username in user_following_list:
+        feed_lists = Post.objects.filter(user=username)
+        
+        for p in feed_lists:
+            feed.append(p)
+    
+    context = {'allPosts':feed}
     
     return render(request,'codepub/codepubHome.html',context)
 
