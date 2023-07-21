@@ -32,8 +32,9 @@
                     
 
                     <div class="dropdown-menu">
-                      <a class="dropdown-item" href="{% url 'profile' %}"><img src="{% static 'images/profile-tag.png' %}" class="drop-tags" alt="">  Profile</a>
-                      <a class="dropdown-item" href="#"><img src="{% static 'images/help-tag.png' %}" class="drop-tags" alt=""> Help</a>
+                      <a class="dropdown-item" href="/view-profile/{{user.username}}"><img src="{% static 'images/profile-tag.png' %}" class="drop-tags" alt="">Profile</a>
+                      <a class="dropdown-item" href="{% url 'profile' %}"><img src="{% static 'images/settings.png' %}" class="drop-tags" alt="">Settings</a>
+                      <a class="dropdown-item" href="{% url 'contact' %}"><img src="{% static 'images/help-tag.png' %}" class="drop-tags" alt=""> Help</a>
                       <a class="dropdown-item" href="{% url 'codepubHome' %}">
                         <img src="{% static 'images/plus.gif' %}" class="drop-tags" alt="plus-icon">
                          Create post</a>

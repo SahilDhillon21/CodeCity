@@ -36,19 +36,28 @@
                     <img src="{{viewed_user_profile.profileimg.url}}"
                       alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
                       style="width: 150px; z-index: 1">
-                    <button type="button" class="btn btn-outline-dark mt-4" data-mdb-ripple-color="dark"
-                      style="z-index: 1;">
-                      Edit profile
-                    </button>
+                      
                   </div>
-                  <div class="ms-3" style="margin-top: 130px;">
+                  
+                  <div class="ms-3" style="margin-top: 110px;">
+                    {% if viewed_user_object.username == user.username %}
+                      <a href="{% url 'profile' %}">
+                        Profile settings
+                      </a>
+                    {% else %}
+                      <a href="/follow/{{viewed_user_object.username}}">
+                        Follow
+                      </a>
+                    {% endif %}
                     <h5>{{viewed_user_profile.user.username}}</h5>
                     <p>{{viewed_user_profile.location}}</p>
+
                   </div>
                 </div>
                 <div class="p-4 text-black" style="background-color: #f8f9fa;">
                   <div class="d-flex justify-content-end text-center py-1">
                     <div>
+                      
                       {% if viewed_user_posts_length > 1 %}
                         <p class="mb-1 h5">{{viewed_user_posts_length}}</p>
                         <p class="small text-muted mb-0">Posts</p>

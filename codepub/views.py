@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
 from home.models import Profile
-from codepub.models import Post, LikePost
+from codepub.models import Post, LikePost, FollowAccount
 # Create your views here.
 
 # @login_required(login_url='login')
@@ -88,3 +88,16 @@ def view_profile(request,pk):
         'viewed_user_posts_length':viewed_user_posts_length
     }
     return render(request,'codepub/view-profile.html',context)
+
+@login_required(login_url='login')
+def follow(request,F):
+    follower = request.user.username
+    
+    if FollowAccount.objects.filter(follower=follower,user = F).first():
+        delete_follower = FollowAccount.objects.get(follower=follower,user = F)
+        delete_follower.delete()
+    else:
+        new_follower = FollowAccount.objects.create(follower=follower,user=F)
+        new_follower.save()
+
+    return redirect('/view-profile/'+F)
