@@ -1,5 +1,9 @@
 /* #4F200D brown */
 
+html, body{
+    width: 100%;
+}
+
 body{
     background-color: #F6F1E9;
 }

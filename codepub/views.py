@@ -9,7 +9,6 @@ from itertools import chain
 
 # @login_required(login_url='login')
 def codepubHome(request):
-    # For processing post data
     if request.method == 'POST':
         user = request.user.username
         title = request.POST['title-input']
@@ -126,8 +125,32 @@ def view_profile(request,pk):
     }
     return render(request,'codepub/view-profile.html',context)
 
+
+
+
+def search(request):
+    if request.method == 'POST':
+        query = request.POST['search-input']
+        query_users = User.objects.filter(username__icontains=query)
+        
+        query_profiles = []
+
+        for user in query_users:
+            prof = Profile.objects.get(user=user)
+            query_profiles.append(prof)
+            
+    
+    context = {'query':query,'query_profiles':query_profiles}
+
+    return render(request,'codepub/search.html',context)
+
+
+
+
+
 @login_required(login_url='login')
 def follow(request,F):
+    
     follower = request.user.username
     
     if FollowAccount.objects.filter(follower=follower,user = F).first():

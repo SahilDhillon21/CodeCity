@@ -1,0 +1,42 @@
+{% extends 'codepubbase.html' %}
+
+
+{% block content %}
+
+    <div class="container-fluid mt-3">
+        <div class="row justify-content-center">
+            <div class="col-auto text-center">
+                <h4>Showing results for <strong>{{query}}</strong></h4>
+            </div>
+        </div>
+            <br>
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    {% for profile in query_profiles %}
+                        <hr>
+                        <div class="row" style="background-color: bisque;">
+                            <div class="col-auto">
+                                <a href="view-profile/{{profile.user.username}}">
+                                    <img src="{{profile.profileimg.url}}" style="width: 80px; margin-top: 4px;" alt="">
+                                </a>
+                            </div>
+                            <div class="col-1">
+                                <a href="view-profile/{{profile.user.username}}">
+                                    <h4 class="mt-2">{{profile.user.username}}</h4>
+                                </a>
+                            </div>
+                            <div class="col-10"></div>
+                            <div class="col-auto">
+                                {{profile.bio}}
+                            </div>
+                            <div class="col-auto">
+                                Location: {{profile.location}}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
