@@ -34,8 +34,48 @@ def codepubHome(request):
         
         for p in feed_lists:
             feed.append(p)
-    
-    context = {'allPosts':feed}
+
+    # follow suggestions ->
+    all_users = User.objects.all()  
+
+    # Extract users from user_following
+    followedUsers = []
+    for U in user_following:
+        person = User.objects.get(username=U.user)
+        followedUsers.append(person)
+
+
+    # Now we have a list of users which the current user follows.
+    # The suggestions list must NOT contain these users.
+    # Creating list of users that aren't being followed.
+
+    suggested_users = []
+
+    for U in all_users:
+        if U not in followedUsers:
+            suggested_users.append(U)
+
+    # Remove currently logged in user
+    current_user = request.user
+    suggested_users.remove(current_user)
+
+    suggested_profile_followers = []
+    for Suser in suggested_users:
+        SuserFollowing = FollowAccount.objects.filter(user=Suser.username)
+        suggested_profile_followers.append(len(SuserFollowing))
+
+    # gather profiles of these suggested users
+
+    suggested_profiles = []
+
+    for S in suggested_users:
+        prof = Profile.objects.get(user=S)
+        suggested_profiles.append(prof)
+
+    sug_profiles = zip(suggested_profiles,suggested_profile_followers)
+    print(sug_profiles)
+
+    context = {'allPosts':feed,'suggested_profiles':suggested_profiles,'sug_profiles':sug_profiles}
     
     return render(request,'codepub/codepubHome.html',context)
 
@@ -143,8 +183,6 @@ def search(request):
     context = {'query':query,'query_profiles':query_profiles}
 
     return render(request,'codepub/search.html',context)
-
-
 
 
 
