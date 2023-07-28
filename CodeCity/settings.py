@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'merchandise',
     'algorithms',
     'codepub',
+    'django.contrib.humanize'
 ]
 
 MIDDLEWARE = [

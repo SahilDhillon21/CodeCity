@@ -1,0 +1,42 @@
+{% extends 'codepubbase.html' %}
+{% load static %}
+{% load humanize %}
+
+
+{% block content %}
+
+
+{% include 'codepub/postView.html' %}
+
+<div class="container-fluid my-5" style="background-color: blanchedalmond;">
+    <div class="row justify-content-center">
+        <div class="col-auto text-center mx-4">
+            <form action="{% url 'postComment' %}" method="POST">
+                <input type="hidden" name="form_type" value="post-comment">
+               <p class="mb-1"><strong>{{user_profile.user}}</strong> says</p> 
+               <input type="hidden" value="{{post.id}}" name="post_id">
+               <textarea class="mt-4" name="comment-input" id="" placeholder="Write your comment here" cols="90" rows="1"></textarea> <br>
+               <button type="submit" class="btn btn-success">
+                    + post comment
+               </button>
+
+            </form>
+            {% for comment in all_comments %}
+                <div class="row">
+                    <div class="col-12">
+                        <strong>{{comment.user.username}}: </strong><div style="background-color: aliceblue; color: black;"><b>{{comment.comment}}</b></div> 
+                            <form action="{% url 'postComment' %}" method="POST">
+                                <input type="hidden" name="post_id" value="{{post.id}}">
+                                <input type="hidden" name="form_type" value="like-comment">
+                                {{comment.likes}} <button class="btn btn-sm btn-danger" name="comment_id" type="submit" value="{{comment.id}}">❤️</button>
+                            </form>
+                        </button><i>at {{comment.timestamp}}</i> 
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

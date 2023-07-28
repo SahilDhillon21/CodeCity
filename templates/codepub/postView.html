@@ -1,36 +1,38 @@
 {% load static %}
-<div class="container-fluid mt-4">
+{% load humanize %}
+<div class="container-fluid mt-4 mb-5">
     <div class="row">
-        <div class="col ">
-            <div class="card ">
+        <div class="col">
+            <div class="card">
                 <div class="card-body post-shadow">
-                  <p class="card-text">
+                    <p class="card-text">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-auto mt-2 px-0" style="color: rgb(105, 63, 0);">
                                 <a href="#" style="color: rgb(105, 63, 0);">
                                     <strong>
-                                        <a
-                                        href="/view-profile/{{post.user}}"><p>{{post.user}}</p></a></strong> <small>posted at {{post.created_at}}</small>
+                                        <a href="/view-profile/{{post.user}}">
+                                            <p>{{post.user}}</p>
+                                        </a></strong> <small>posted at {{post.created_at}}</small>
                                 </a>
                             </div>
                         </div>
                     </div>
                     <div class="row mb-1">
                         <div class="col-auto">
-                            <strong id="preview-title" 
-                            style="color: black;">{{ post.title }}
+                            <strong id="preview-title" style="color: black;">{{ post.title }}
                             </strong>
                         </div>
                     </div>
                     {% if post.image %}
-                        <div class="row mb-2">
-                            <div class="col text-center">
-                                <a href="{{post.image.url}}">
-                                    <img src="{{post.image.url}}" id="preview-image" alt="" class="img-responsive" style="max-width: 80%;">
-                                </a>
-                            </div>
+                    <div class="row mb-2">
+                        <div class="col text-center">
+                            <a href="{{post.image.url}}">
+                                <img src="{{post.image.url}}" id="preview-image" alt="" class="img-responsive"
+                                    style="max-width: 80%;">
+                            </a>
                         </div>
+                    </div>
                     {% endif %}
 
                     <div class="row mt-2">
@@ -38,15 +40,28 @@
                             <span id="preview-caption">{{post.caption}}</span>
                         </div>
                     </div>
-                  </p>
-                  <a href="{% url 'like-post' %}?post_id={{post.id}}">
-                    <img src="{% static 'images/like.png' %}" class="profile-img"  alt="">
-                    <span style="color: black; font-size: 20px;" class="align-middle">{{post.likes}}</span>
-                  </a>
-                  {% if post.image %}
-                    <a href="{{post.image.url}}" download>Download</a>
-                  {% endif %}
+                    </p>
+                    <a href="{% url 'like-post' %}?post_id={{post.id}}">
+                        <img src="{% static 'images/like.png' %}" class="profile-img" alt="">
+                        <span style="color: black; font-size: 20px;" class="align-middle">{{post.likes}}</span>
+                    </a>
+                    {% if post.image %}
+                        <a href="{{post.image.url}}" download>Download</a>
+                    {% endif %}
                 </div>
+
+                {% if request.user.is_authenticated %}
+                    <form action="{% url 'postComment' %}" method="GET">
+                        {% csrf_token %}
+                        <input type="hidden" name="post_id" value="{{post.id}}">
+                        
+                        <button type="submit" class="btn btn-danger mt-3 text-center"> 
+                            View post
+                        </button>
+                    </form>
+                {% else %}
+                    <h3>Please log in if you wish to add comments</h3>
+                {% endif %}
             </div>
         </div>
     </div>

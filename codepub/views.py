@@ -1,9 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
 from django.contrib import messages
 from home.models import Profile
-from codepub.models import Post, LikePost, FollowAccount
+from codepub.models import *
 from itertools import chain 
 # Create your views here.
 
@@ -57,7 +58,8 @@ def codepubHome(request):
 
     # Remove currently logged in user
     current_user = request.user
-    suggested_users.remove(current_user)
+    if current_user in suggested_users:
+        suggested_users.remove(current_user)
 
     suggested_profile_followers = []
     for Suser in suggested_users:
@@ -199,3 +201,50 @@ def follow(request,F):
         new_follower.save()
 
     return redirect('/view-profile/'+F)
+
+
+@login_required(login_url='login')
+@csrf_exempt
+def postComment(request):
+    if request.method=='GET':
+        post_id = request.GET.get('post_id')
+        user = request.user
+        post = Post.objects.get(id=post_id)
+        
+
+    if request.method=='POST':
+        if(request.POST.get("form_type")=="post-comment"):
+            post_id = request.POST['post_id']
+            post = Post.objects.get(id=post_id)
+            comment_input = request.POST['comment-input']
+        
+            if(len(comment_input)) > 0:
+                new_comment = PostComment(comment=comment_input,user=request.user,post=post)
+                new_comment.save()
+        
+        else:
+            liked_comment_id = request.POST.get("comment_id")
+            post_id = request.POST['post_id']
+            post = Post.objects.get(id=post_id)
+
+            liked_comment = PostComment.objects.filter(id=liked_comment_id).first()
+            liked = liked_comment.isLiked()
+            
+            if liked:
+                liked_comment.likes -= 1
+                liked_comment.liked = False
+                print('liked1')
+            else:
+                liked_comment.likes += 1
+                liked_comment.liked = True
+                print('liked2')
+                
+
+            liked_comment.save()
+                
+        
+    
+    all_comments = PostComment.objects.filter(post=post)
+    context = {'post':post,'all_comments':all_comments}
+    return render(request,'codepub/commentPostView.html',context)
+
