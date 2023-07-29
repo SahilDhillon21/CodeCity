@@ -9,12 +9,16 @@
 {% include 'codepub/postView.html' %}
 
 <div class="container-fluid my-5" style="background-color: blanchedalmond;">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
     <div class="row justify-content-center">
         <div class="col-auto text-center mx-4">
             <form action="{% url 'postComment' %}" method="POST">
                 <input type="hidden" name="form_type" value="post-comment">
                <p class="mb-1"><strong>{{user_profile.user}}</strong> says</p> 
                <input type="hidden" value="{{post.id}}" name="post_id">
+               <input type="hidden" name="comment_id" value="{{comment.id}}">
                <textarea class="mt-4" name="comment-input" id="" placeholder="Write your comment here" cols="90" rows="1"></textarea> <br>
                <button type="submit" class="btn btn-success">
                     + post comment
@@ -22,17 +26,105 @@
 
             </form>
             {% for comment in all_comments %}
-                <div class="row">
-                    <div class="col-12">
-                        <strong>{{comment.user.username}}: </strong><div style="background-color: aliceblue; color: black;"><b>{{comment.comment}}</b></div> 
-                            <form action="{% url 'postComment' %}" method="POST">
-                                <input type="hidden" name="post_id" value="{{post.id}}">
-                                <input type="hidden" name="form_type" value="like-comment">
-                                {{comment.likes}} <button class="btn btn-sm btn-danger" name="comment_id" type="submit" value="{{comment.id}}">❤️</button>
-                            </form>
-                        </button><i>at {{comment.timestamp}}</i> 
+                {%if comment.parent == None %}
+                    <div class="row my-3">
+                        <div class="col-12">
+                            <div style="background-color: aliceblue; color: black;" >
+                                <div class="row">
+                                    <div class="col-3">
+                                        <form action="{% url 'postComment' %}" method="POST" class="my-3">
+                                            <input type="hidden" name="post_id" value="{{post.id}}">
+                                            <input type="hidden" name="form_type" value="like-comment">
+                                            {{comment.likes}} <button class="btn btn-sm btn-danger" name="comment_id" type="submit" value="{{comment.id}}">❤️</button>
+                                        </form>
+                                    </button>
+                                    </div>
+                                    <div class="col-6 d-flex align-items-center">
+                                        <b>{{comment.comment}}</b>
+                                    </div>
+                                    <div class="col-3 d-flex align-items-center">
+                                        <i style="display: inline-block; font-size: 12px;">at {{comment.timestamp}}</i> 
+                                    </div>
+                                </div>
+                                
+                                
+                            </div> 
+                                
+
+                            <div class="accordion accordion-flush" id="accordionFlushExample">
+                                <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button bg-info btn-sm collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne{{comment.id}}" aria-expanded="true" aria-controls="flush-collapseOne">
+                                    Reply
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseOne{{comment.id}}" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <form action="{% url 'postComment' %}" method="POST">
+                                            <input type="text" placeholder="Your reply" name="reply">
+                                            <input type="hidden" name="form_type" value="reply-comment">
+                                            <input type="hidden" value="{{post.id}}" name="post_reply_id">
+                                            <input type="hidden" name="comment_id" value="{{comment.id}}">
+                                        </form>
+                                    </div>
+                                </div>
+                                </div>
+                                
+                            </div>
+
+
+                        </div>
                     </div>
-                </div>
+                {% else %}
+                    <div class="row my-3">
+                        <div class="col-12">
+                            <strong>{{comment.user.username}} : </strong> <i>Replied to {{comment.parent.user.username}}</i>
+                            <div style="background-color: rgb(4, 138, 255); color: black; border-left: 2px solid black;" class="ml-2">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <form action="{% url 'postComment' %}" method="POST" class="my-3">
+                                            <input type="hidden" name="post_id" value="{{post.id}}">
+                                            <input type="hidden" name="form_type" value="like-comment">
+                                            {{comment.likes}} <button class="btn btn-sm btn-danger" name="comment_id" type="submit" value="{{comment.id}}">❤️</button>
+                                        </form>
+                                    </button>
+                                    </div>
+                                    <div class="col-6 d-flex align-items-center">
+                                        <b>{{comment.comment}}</b>
+                                    </div>
+                                    <div class="col-3 d-flex align-items-center">
+                                        <i style="display: inline-block; font-size: small;">at {{comment.timestamp}}</i> 
+                                    </div>
+                                </div>
+                                
+                                
+                            </div> 
+
+                            <div class="accordion accordion-flush ml-2" id="accordionFlushExample">
+                                <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button bg-info btn-sm collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne{{comment.id}}" aria-expanded="true" aria-controls="flush-collapseOne">
+                                    Reply
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseOne{{comment.id}}" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <form action="{% url 'postComment' %}" method="POST">
+                                            <input type="text" placeholder="Your reply" name="reply">
+                                            <input type="hidden" name="form_type" value="reply-comment">
+                                            <input type="hidden" value="{{post.id}}" name="post_reply_id">
+                                            <input type="hidden" name="comment_id" value="{{comment.id}}">
+                                        </form>
+                                    </div>
+                                </div>
+                                </div>
+                                
+                            </div>
+
+
+                        </div>
+                    </div>
+                    {% endif %}
             {% endfor %}
         </div>
     </div>

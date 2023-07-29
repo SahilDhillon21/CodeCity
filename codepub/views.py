@@ -205,7 +205,7 @@ def follow(request,F):
 
 @login_required(login_url='login')
 @csrf_exempt
-def postComment(request):
+def postComment(request):   
     if request.method=='GET':
         post_id = request.GET.get('post_id')
         user = request.user
@@ -222,7 +222,7 @@ def postComment(request):
                 new_comment = PostComment(comment=comment_input,user=request.user,post=post)
                 new_comment.save()
         
-        else:
+        elif(request.POST.get("form_type")=="like-comment"):
             liked_comment_id = request.POST.get("comment_id")
             post_id = request.POST['post_id']
             post = Post.objects.get(id=post_id)
@@ -241,8 +241,18 @@ def postComment(request):
                 
 
             liked_comment.save()
-                
-        
+        else:
+            post_id = request.POST.get('post_reply_id')
+            post = Post.objects.get(id=post_id)
+            parent_comment_id = request.POST.get('comment_id')
+            reply = request.POST.get('reply')
+            parent_comment = PostComment.objects.filter(id=parent_comment_id).first()
+
+            if(len(reply)>0):
+                new_reply = PostComment(comment=reply,parent=parent_comment,user=request.user,post=post)
+                new_reply.save()
+
+
     
     all_comments = PostComment.objects.filter(post=post)
     context = {'post':post,'all_comments':all_comments}
