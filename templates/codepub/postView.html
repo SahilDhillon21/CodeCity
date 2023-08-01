@@ -8,13 +8,26 @@
                     <p class="card-text">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-auto mt-2 px-0" style="color: rgb(105, 63, 0);">
+                            <div class="col-4 mt-2 px-0" style="color: rgb(105, 63, 0);">
                                 <a href="#" style="color: rgb(105, 63, 0);">
                                     <strong>
                                         <a href="/view-profile/{{post.user}}">
                                             <p>{{post.user}}</p>
                                         </a></strong> <small>posted at {{post.created_at}}</small>
                                 </a>
+                            </div>
+                            <div class="offset-6 col-2 mt-2 px-0">
+                                <div class="dropdown">
+                                    <a class="btn btn-danger dropdown-toggle text-white" href="#" role="button"
+                                        id="dropdownMenuLink" data-mdb-toggle="dropdown" aria-expanded="false">
+                                        Report
+                                    </a>
+
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <li><a class="dropdown-item" href="/report/{{post.id}}">this post</a></li>
+                                        <li><a class="dropdown-item" href="/report/{{post.user}}">this user</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -46,21 +59,21 @@
                         <span style="color: black; font-size: 20px;" class="align-middle">{{post.likes}}</span>
                     </a>
                     {% if post.image %}
-                        <a href="{{post.image.url}}" download>Download</a>
+                    <a href="{{post.image.url}}" download>Download</a>
                     {% endif %}
                 </div>
 
                 {% if request.user.is_authenticated %}
-                    <form action="{% url 'postComment' %}" method="GET">
-                        {% csrf_token %}
-                        <input type="hidden" name="post_id" value="{{post.id}}">
-                        
-                        <button type="submit" class="btn btn-danger mt-3 text-center"> 
-                            View post
-                        </button>
-                    </form>
+                <form action="{% url 'postComment' %}" method="GET">
+                    {% csrf_token %}
+                    <input type="hidden" name="post_id" value="{{post.id}}">
+
+                    <button type="submit" class="btn btn-info mt-3 text-center">
+                        View post
+                    </button>
+                </form>
                 {% else %}
-                    <h3>Please log in if you wish to add comments</h3>
+                <h3>Please log in if you wish to add comments</h3>
                 {% endif %}
             </div>
         </div>

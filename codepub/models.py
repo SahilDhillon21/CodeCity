@@ -50,6 +50,16 @@ class PostComment(models.Model):
     
     def isLiked(self):
         return self.liked
+    
+class Reports(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    post = models.ForeignKey(Post,on_delete=models.CASCADE, null=True, default=None)
+    type = models.CharField(max_length=50)
+    reason = models.TextField()
+
+    def __str__(self):
+        return self.type+" - "+self.user
+    
 
 
     

@@ -6,6 +6,7 @@ from django.contrib import messages
 from home.models import Profile
 from codepub.models import *
 from itertools import chain 
+import uuid
 # Create your views here.
 
 # @login_required(login_url='login')
@@ -257,4 +258,40 @@ def postComment(request):
     all_comments = PostComment.objects.filter(post=post)
     context = {'post':post,'all_comments':all_comments}
     return render(request,'codepub/commentPostView.html',context)
+
+def report(request,id):
+    isPost = is_valid_uuid(id)
+    post = None
+    profile = None
+    context = {'isPost':isPost, 'post':post, 'profile':profile}
+    if isPost:
+        reported_post = Post.objects.get(id=id)
+        context['post'] = reported_post
+    else:
+        reported_user = User.objects.get(username=id)
+        reported_profile = Profile.objects.get(user=reported_user)
+        context['profile'] = reported_profile
+
+    
+
+
+    return render(request,'codepub/report.html',context)
+
+
+def is_valid_uuid(value):
+    try:
+        uuid.UUID(str(value))
+        return True
+    except ValueError:
+        return False
+    
+def report_submitted(request):
+    if request.method=='POST':
+        type = request.POST['type']
+        post = request.POST['post']
+        reason = request.POST['reason']
+        
+
+
+    return HttpResponse("Report submitted for: "+post+" -> "+reason+" type: "+type)
 

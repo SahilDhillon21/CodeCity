@@ -1,0 +1,59 @@
+{% extends 'codepubbase.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="container my-4">
+    <div class="row">
+        <div class="py-2 offset-2 col-md-8 bg-danger text-center">
+            {% if isPost %}
+                {% include 'codepub/postView.html' %}
+            {% else %}
+            <h5>You wish to report <i>{{profile.user.username}} </i></h5>
+            <div class="row" style="background-color: bisque;">
+                <div class="col-auto">
+                    <a href="view-profile/{{profile.user.username}}">
+                        <img src="{{profile.profileimg.url}}" style="width: 80px; margin-top: 4px;" alt="">
+                    </a>
+                </div>
+                <div class="col-1">
+                    <a href="view-profile/{{profile.user.username}}">
+                        <h4 class="mt-2">{{profile.user.username}}</h4>
+                    </a>
+                </div>
+                <div class="col-10"></div>
+                <div class="col-auto">
+                    {{profile.bio}}
+                </div>
+                <div class="col-auto">
+                    Location: {{profile.location}}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="py-2 offset-2 col-md-8 text-center">
+            <form  method="post" action="{% url 'report-submitted' %}" class="text-center">
+                {% csrf_token %}
+                <select required class="form-select" name="type" aria-label="Default select example">
+                    <option value="spam">Spam</option>
+                    <option value="irrelevant">Irrelevant</option>
+                    <option value="violent">Violent content</option>
+                    <option value="harmful">Harmful or dangerous</option>
+                </select> <br>
+                <input type="hidden" name="post" value="{{post.id}}">
+                <textarea required name="reason" class="my-3" placeholder="Write your reason here" cols="60" rows="10"></textarea> <br>
+
+                <button type="submit" class="btn btn-danger">
+                    Submit report
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
