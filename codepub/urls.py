@@ -10,6 +10,6 @@ urlpatterns = [
     path('view-profile/<str:pk>',views.view_profile,name='view-profile'),
     path('search',views.search,name='search'),
     path('post-comment',views.postComment,name='postComment'),
-    path('report/<id>',views.report, name='report'),
+    path('report/<user_id>/<post_id>',views.report, name='report'),
     path('report-submitted',views.report_submitted, name='report-submitted'),
 ]

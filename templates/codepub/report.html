@@ -45,6 +45,8 @@
                     <option value="harmful">Harmful or dangerous</option>
                 </select> <br>
                 <input type="hidden" name="post" value="{{post.id}}">
+                <input type="hidden" name="reported_user" value="{{profile.user}}">
+                
                 <textarea required name="reason" class="my-3" placeholder="Write your reason here" cols="60" rows="10"></textarea> <br>
 
                 <button type="submit" class="btn btn-danger">

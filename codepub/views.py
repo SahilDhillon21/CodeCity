@@ -259,18 +259,21 @@ def postComment(request):
     context = {'post':post,'all_comments':all_comments}
     return render(request,'codepub/commentPostView.html',context)
 
-def report(request,id):
-    isPost = is_valid_uuid(id)
+def report(request,user_id,post_id):
+    isPost = is_valid_uuid(post_id)
+    print(isPost)
     post = None
     profile = None
     context = {'isPost':isPost, 'post':post, 'profile':profile}
+
+    reported_user = User.objects.get(username=user_id)
+    reported_profile = Profile.objects.get(user=reported_user)
+    context['profile'] = reported_profile
+
     if isPost:
-        reported_post = Post.objects.get(id=id)
+        reported_post = Post.objects.get(id=post_id)
         context['post'] = reported_post
-    else:
-        reported_user = User.objects.get(username=id)
-        reported_profile = Profile.objects.get(user=reported_user)
-        context['profile'] = reported_profile
+
 
     
 
@@ -289,9 +292,10 @@ def report_submitted(request):
     if request.method=='POST':
         type = request.POST['type']
         post = request.POST['post']
+        reported_user = request.POST.get('reported_user'," none ")
         reason = request.POST['reason']
-        
 
+        print(reported_user)
 
-    return HttpResponse("Report submitted for: "+post+" -> "+reason+" type: "+type)
+    return HttpResponse("Report submitted for: "+post+"by user: "+ reported_user+ " -> "+reason+" type: "+type)
 
