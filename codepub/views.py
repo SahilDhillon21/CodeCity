@@ -291,11 +291,14 @@ def is_valid_uuid(value):
 def report_submitted(request):
     if request.method=='POST':
         type = request.POST['type']
-        post = request.POST['post']
-        reported_user = request.POST.get('reported_user'," none ")
+        post_id = request.POST['post']
+        post = Post.objects.get(id=post_id)
+        reported_user_name = request.POST.get('reported_user'," none ")
+        reported_user = User.objects.get(username=reported_user_name)
         reason = request.POST['reason']
 
-        print(reported_user)
-
-    return HttpResponse("Report submitted for: "+post+"by user: "+ reported_user+ " -> "+reason+" type: "+type)
+        new_report = Report.objects.create(user = reported_user, post = post, type=type, reason=reason)
+        new_report.save()
+        messages.error(request,"Report successfully submitted")
+    return redirect(codepubHome)
 

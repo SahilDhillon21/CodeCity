@@ -1,102 +1,123 @@
 <!doctype html>
 {% load static %}
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="{% static 'css/cp.css' %}">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>CodePub</title>
-  </head>
-  <body>
-    <div class="container-fluid" style="width: 100%;">
-        <div class="row pt-2 pb-2" style="background-color: #4F200D;">
-            <div class="col-md-2"></div>
-            <div class="col-md-2 mt-4">
+  <link rel="stylesheet" href="{% static 'css/cp.css' %}">
 
-            <form action="{% url 'search' %}" method="post">
-              {% csrf_token %}
+  <title>CodePub</title>
+</head>
 
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <button class="btn btn-light" type="submit">
-                    Go
-                  </button>
-                </div>
-                <input type="text" class="form-control" name="search-input" placeholder="Search users" aria-label="" aria-describedby="basic-addon1">
-              </div>
-            </form>
+<body>
+  <div class="container-fluid" style="width: 100%;">
+    <div class="row pt-2 pb-2" style="background-color: #4F200D;">
+      <div class="col-md-2"></div>
+      <div class="col-md-2 mt-4">
 
+        <form action="{% url 'search' %}" method="post">
+          {% csrf_token %}
 
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <button class="btn btn-light" type="submit">
+                Go
+              </button>
             </div>
-            <div class="col-md-4 text-center">
-                <a href="{% url 'codepubHome' %}" style="text-decoration: none"><strong class="cp-title">CodePub</strong></a>
-            </div>
+            <input type="text" class="form-control" name="search-input" placeholder="Search users" aria-label=""
+              aria-describedby="basic-addon1">
+          </div>
+        </form>
 
-            <div class="col-md-4 text-center">
-                {% if user.is_authenticated %}
-                  <div class="btn-group btn-group-lg mt-3">
-                    <a href="{% url 'profile' %}" type="button" class="btn dropdown-toggle btn-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
-                      <!-- <img src="{% static 'images/Default-avatar.jpg' %}" class="profile-img pb-2" alt="profile-pic"> -->
-                      <img src="{{user_profile.profileimg.url}}" class="profile-img pb-2" alt="profile-pic">
-                      <span style="color: #FFD93D; text-transform: none;">{{user_profile.user}}</span>
-                    </a>
-                    
 
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="/view-profile/{{user.username}}"><img src="{% static 'images/profile-tag.png' %}" class="drop-tags" alt="">Profile</a>
-                      <a class="dropdown-item" href="{% url 'profile' %}"><img src="{% static 'images/settings.png' %}" class="drop-tags" alt="">Settings</a>
-                      <a class="dropdown-item" href="{% url 'contact' %}"><img src="{% static 'images/help-tag.png' %}" class="drop-tags" alt=""> Help</a>
-                      <a class="dropdown-item" href="{% url 'codepubHome' %}">
-                        <img src="{% static 'images/plus.gif' %}" class="drop-tags" alt="plus-icon">
-                         Create post</a>
-                      
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item text-danger" href="{% url 'logout' %}"><img src="{% static 'images/logout-tag.png' %}" class="drop-tags" alt=""> 
-                        Logout</a>
-                    </div>
+      </div>
+      <div class="col-md-4 text-center">
+        <a href="{% url 'codepubHome' %}" style="text-decoration: none"><strong class="cp-title">CodePub</strong></a>
+      </div>
 
-                    <!-- log in button OR user profile options -->
-                  </div>
-                {% else %}
-                  <div class="btn-group btn-group-lg mt-4">
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                      <a href="{% url 'login' %}" class="btn btn-warning" style="height:fit-content;">Login</a>
-                      <a href="{% url 'signup' %}" class="btn btn-warning" style="height:fit-content;">Sign up</a>
-                    </div>
-                  </div>
+      <div class="col-md-4 text-center">
+        {% if user.is_authenticated %}
+        <div class="btn-group btn-group-lg mt-3">
+          <a href="{% url 'profile' %}" type="button" class="btn dropdown-toggle btn-lg" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false" style="color: white;">
+            <!-- <img src="{% static 'images/Default-avatar.jpg' %}" class="profile-img pb-2" alt="profile-pic"> -->
+            <img src="{{user_profile.profileimg.url}}" class="profile-img pb-2" alt="profile-pic">
+            <span style="color: #FFD93D; text-transform: none;">{{user_profile.user}}</span>
+          </a>
 
-                {% endif %}
-                  <!-- column -->
-            </div>
 
-            <!-- row -->
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/view-profile/{{user.username}}"><img
+                src="{% static 'images/profile-tag.png' %}" class="drop-tags" alt="">Profile</a>
+            <a class="dropdown-item" href="{% url 'profile' %}"><img src="{% static 'images/settings.png' %}"
+                class="drop-tags" alt="">Settings</a>
+            <a class="dropdown-item" href="{% url 'contact' %}"><img src="{% static 'images/help-tag.png' %}"
+                class="drop-tags" alt=""> Help</a>
+            <a class="dropdown-item" href="{% url 'codepubHome' %}">
+              <img src="{% static 'images/plus.gif' %}" class="drop-tags" alt="plus-icon">
+              Create post</a>
+
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item text-danger" href="{% url 'logout' %}"><img
+                src="{% static 'images/logout-tag.png' %}" class="drop-tags" alt="">
+              Logout</a>
+          </div>
+
+          <!-- log in button OR user profile options -->
+        </div>
+        {% else %}
+        <div class="btn-group btn-group-lg mt-4">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <a href="{% url 'login' %}" class="btn btn-warning" style="height:fit-content;">Login</a>
+            <a href="{% url 'signup' %}" class="btn btn-warning" style="height:fit-content;">Sign up</a>
+          </div>
         </div>
 
-        <!-- container -->
+        {% endif %}
+        <!-- column -->
+      </div>
+
+      <!-- row -->
     </div>
 
+    <!-- container -->
+  </div>
 
-    {% block content %}
-    
-    {% endblock content %}
+  <div class="text-center my-3">
+    {% for message in messages %}
+    <h3>{{message}}</h3>
+    {% endfor %}
+  </div>
+
+  {% block content %}
+
+  {% endblock content %}
 
 
 
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
 
-    <script src="{% static 'scripts/cp.js' %}"></script>
-    
-  </body>
+  <script src="{% static 'scripts/cp.js' %}"></script>
+
+</body>
+
 </html>
