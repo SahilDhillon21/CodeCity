@@ -16,7 +16,14 @@
                                         </a></strong> <small>posted at {{post.created_at}}</small>
                                 </a>
                             </div>
-                            <div class="offset-6 col-2 mt-2 px-0">
+                            <div class="offset-5 col-3 mt-2 px-0">
+                                {% if user_profile.is_moderator %}
+                                    <a href="/delete-post/{{post.id}}">
+                                        <button class="btn btn-success">
+                                            Delete this post
+                                        </button>
+                                    </a>
+                                {% else %}
                                 <div class="dropdown">
                                     <a class="btn btn-danger dropdown-toggle text-white" href="#" role="button"
                                         id="dropdownMenuLink" data-mdb-toggle="dropdown" aria-expanded="false">
@@ -24,10 +31,12 @@
                                     </a>
 
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <li><a class="dropdown-item" href="/report/{{post.user}}/{{post.id}}">this post</a></li>
+                                        <li><a class="dropdown-item" href="/report/{{post.user}}/{{post.id}}">this
+                                                post</a></li>
                                         <li><a class="dropdown-item" href="/report/{{post.user}}">this user</a></li>
                                     </ul>
                                 </div>
+                                {% endif %}
                             </div>
                         </div>
                     </div>

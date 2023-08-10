@@ -19,7 +19,11 @@
 <body>
   <div class="container-fluid" style="width: 100%;">
     <div class="row pt-2 pb-2" style="background-color: #4F200D;">
-      <div class="col-md-2"></div>
+      <div class="col-md-2">
+        {% if user_profile.is_moderator %}
+          <h4 style="color: green;"> Moderator: {{user_profile.user}} </h4>
+        {% endif %}
+      </div>
       <div class="col-md-2 mt-4">
 
         <form action="{% url 'search' %}" method="post">

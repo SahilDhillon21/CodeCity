@@ -302,3 +302,8 @@ def report_submitted(request):
         messages.error(request,"Report successfully submitted")
     return redirect(codepubHome)
 
+def delete_post(request,post_id):
+    post = Post.objects.get(id=post_id)
+    
+    return HttpResponse("You wish to delete"+" - "+post_id)
+

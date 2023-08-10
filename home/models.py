@@ -12,6 +12,7 @@ class Contact(models.Model):
     email = models.EmailField(max_length=100)
     content = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
+    
 
     def __str__(self):
         return 'Message from '+ self.name
@@ -23,6 +24,12 @@ class Profile(models.Model):
     bio = models.TextField(max_length=1000, blank=True)
     profileimg = models.ImageField(upload_to='profile_images',default='Default-avatar.jpg')
     location = models.CharField(max_length=100,blank=True)
+    moderator = models.IntegerField(default=0)
+
+    @property
+    def is_moderator(self):
+        return self.moderator == 1
+
 
     def __str__(self):
         return self.user.username
