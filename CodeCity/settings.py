@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'merchandise',
     'algorithms',
     'codepub',
+    'channels',
     'django.contrib.humanize'
 ]
 
@@ -75,6 +76,12 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'CodeCity.wsgi.application'
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer'
+    }
+}
 
 
 # Database

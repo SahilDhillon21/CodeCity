@@ -1,81 +1,87 @@
 {% extends 'codepubbase.html' %}
 {% block content %}
-    
-    <div class="container-fluid mt-5">
-        <div class="row">
-            <div class="col-md-7 offset-1  ">
-                <h3 style="color: black;">Your feed</h3>
-                <div class="accordion accordion-borderless h-auto open" id="accordionExampleY" >
-                    <div class="accordion-item ">
-                      <h2 class="accordion-header" id="headingOneY">
-                        <button class="accordion-button d-block text-center" type="button" data-mdb-toggle="collapse"
-                          data-mdb-target="#collapseOneY" aria-expanded="true" aria-controls="collapseOneY"
-                          style="color: white; background-color: black;">
-                          <i class="far fa-square-plus"></i> &nbsp <strong>Create new post</strong>
-                        </button>
-                      </h2>
-                      <div id="collapseOneY" class="accordion-collapse collapse" aria-labelledby="headingOneY"
-                        data-mdb-parent="#accordionExampleY">
-                        <div class="accordion-body">
-                            {% if user.is_authenticated %}
 
-                            <form action="{% url 'codepubHome' %}" method="post" enctype="multipart/form-data">
-                                {% csrf_token %}
-                                <!-- Post title  -->
-                                <div class="form-outline mb-4">
-                                  <input type="text" id="title-input" name="title-input" class="form-control" minlength="3" maxlength="200" />
-                                  <label class="form-label" for="form5Example1">Title</label>
-                                </div>
-                              
-                                <!-- Caption  -->
-                                <div class="form-outline mb-4">
-                                  <textarea name="caption-input" maxlength="15000" id="caption-input" minlength="3" cols="30" class="form-control" rows="5"></textarea>
-                                  <label class="form-label" for="form5Example2">Caption</label>
-                                </div>
+<div class="container-fluid mt-5">
 
+  <div class="row justify-content-center">
+  </div>
 
-                                <!-- File upload -->
-                                <div class="form-outline mb-4 text-center">
-                                    <input type="file" name="image-input" id="image-input" accept="image/*">Upload image
-                                  </div>
-                                
-                                <!-- Show preview of post -->
+  <div class="row">
+    <div class="col-md-7 offset-1  ">
+      <h3 style="color: black;">Your feed</h3>
+      <div class="accordion accordion-borderless h-auto open" id="accordionExampleY">
+        <div class="accordion-item ">
+          <h2 class="accordion-header" id="headingOneY">
+            <button class="accordion-button d-block text-center" type="button" data-mdb-toggle="collapse"
+              data-mdb-target="#collapseOneY" aria-expanded="true" aria-controls="collapseOneY"
+              style="color: white; background-color: black;">
+              <i class="far fa-square-plus"></i> &nbsp <strong>Create new post</strong>
+            </button>
+          </h2>
+          <div id="collapseOneY" class="accordion-collapse collapse" aria-labelledby="headingOneY"
+            data-mdb-parent="#accordionExampleY">
+            <div class="accordion-body">
+              {% if user.is_authenticated %}
 
-                                {% include 'codepub/postPreview.html' %}
-                                <!-- Submit button -->
-                                <div class="container-fluid pt-5">
-                                  <div class="row justify-content-center">
-                                    <div class="col-auto">
-                                      <button type="submit" class="btn btn-dark btn-block mb-4 text-center"> 
-                                        <i class="fas fa-circle-check"></i>&nbsp Post
-                                      </button>
-                                    </div>
-                                  </div>
-                                </div>
-
-                                
-
-                              </form>
-
-                            {% else %}
-                                <p>You need to <strong><a href="{% url 'login' %}">log in</a></strong> to be able to post.</p>
-                            {% endif %}
-                        </div>
-                      </div>
-                    </div>
+              <form action="{% url 'codepubHome' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <!-- Post title  -->
+                <div class="form-outline mb-4">
+                  <input type="text" id="title-input" name="title-input" class="form-control" minlength="3"
+                    maxlength="200" />
+                  <label class="form-label" for="form5Example1">Title</label>
                 </div>
-                <!-- post option end -->
 
-                <!-- Displaying all posts -->
-                {% for post in allPosts reversed %}
-                  {% include 'codepub/postView.html' %}
-                {% endfor %}
+                <!-- Caption  -->
+                <div class="form-outline mb-4">
+                  <textarea name="caption-input" maxlength="15000" id="caption-input" minlength="3" cols="30"
+                    class="form-control" rows="5"></textarea>
+                  <label class="form-label" for="form5Example2">Caption</label>
+                </div>
 
+
+                <!-- File upload -->
+                <div class="form-outline mb-4 text-center">
+                  <input type="file" name="image-input" id="image-input" accept="image/*">Upload image
+                </div>
+
+                <!-- Show preview of post -->
+
+                {% include 'codepub/postPreview.html' %}
+                <!-- Submit button -->
+                <div class="container-fluid pt-5">
+                  <div class="row justify-content-center">
+                    <div class="col-auto">
+                      <button type="submit" class="btn btn-dark btn-block mb-4 text-center">
+                        <i class="fas fa-circle-check"></i>&nbsp Post
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+
+
+              </form>
+
+              {% else %}
+              <p>You need to <strong><a href="{% url 'login' %}">log in</a></strong> to be able to post.</p>
+              {% endif %}
             </div>
-            <div class="col-md-4 mt-5 left-border">
-                {% include 'codepub/side.html' %}
-            </div>
+          </div>
         </div>
+      </div>
+      <!-- post option end -->
+
+      <!-- Displaying all posts -->
+      {% for post in allPosts reversed %}
+      {% include 'codepub/postView.html' %}
+      {% endfor %}
+
     </div>
+    <div class="col-md-4 mt-5 left-border">
+      {% include 'codepub/side.html' %}
+    </div>
+  </div>
+</div>
 
 {% endblock content %}

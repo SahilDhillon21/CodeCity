@@ -17,7 +17,7 @@
                                 </a>
                             </div>
                             <div class="offset-5 col-3 mt-2 px-0">
-                                {% if user_profile.is_moderator %}
+                                {% if user_profile.is_moderator or request.user.username == post.user %}
                                     <a href="/delete-post/{{post.id}}">
                                         <button class="btn btn-success">
                                             Delete this post
