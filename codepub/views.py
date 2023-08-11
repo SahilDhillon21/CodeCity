@@ -22,6 +22,7 @@ def codepubHome(request):
 
         messages.info(request,"Post created successfully")
 
+    all_reports = Report.objects.all()
 
     user_following_list = []
     feed = []
@@ -78,7 +79,7 @@ def codepubHome(request):
     sug_profiles = zip(suggested_profiles,suggested_profile_followers)
     print(sug_profiles)
 
-    context = {'allPosts':feed,'suggested_profiles':suggested_profiles,'sug_profiles':sug_profiles}
+    context = {'allPosts':feed,'suggested_profiles':suggested_profiles,'sug_profiles':sug_profiles, 'reports':all_reports}
     
     return render(request,'codepub/codepubHome.html',context)
 
