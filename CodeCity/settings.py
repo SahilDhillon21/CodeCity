@@ -101,9 +101,8 @@ CHANNEL_LAYERS = {
 # }
 
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    "default": dj_database_url.parse("postgres://ccdatabase_user:BHLlbRTk0LKf8sdlVke9qXKhB9fRBSuw@dpg-cjr1ccojbais73a69qvg-a.singapore-postgres.render.com/ccdatabase")
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
