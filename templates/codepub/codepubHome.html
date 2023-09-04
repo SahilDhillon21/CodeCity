@@ -3,9 +3,11 @@
 
 <div class="container-fluid mt-5">
 
+  {% if request.user.profile.moderator == 1 %}
   {% if reports %}
   <div class="row justify-content-center mx-4">
     <h4 style="color: red;">Reports</h4>
+    
     {% for report in reports %}
     <div class="col-md-3">
       On user: <a href="view-profile/{{report.user.username}}"><p style="color: red;"> {{report.user}} </p></a>
@@ -29,6 +31,7 @@
     </div>
     {% endfor %}
   </div>
+  {% endif %}
   {% endif %}
 
   <div class="row">
