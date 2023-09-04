@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'algorithms',
     'codepub',
     'form',
-    'channels',
     'django.contrib.humanize'
 ]
 
