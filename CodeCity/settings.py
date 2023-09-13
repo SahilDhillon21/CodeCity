@@ -89,20 +89,18 @@ CHANNEL_LAYERS = {
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'CodeCity',
-#         'USER': 'postgres',
-#         'PASSWORD': 'root',
-#         'HOST': 'localhost',
-#         'PORT': ''
-#     }
-# }
-
 DATABASES = {
-    "default": dj_database_url.parse("postgres://ccdatabase_user:BHLlbRTk0LKf8sdlVke9qXKhB9fRBSuw@dpg-cjr1ccojbais73a69qvg-a.singapore-postgres.render.com/ccdatabase")
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'CodeCity',
+        'USER': 'postgres',
+        'PASSWORD': 'root',
+        'HOST': 'localhost',
+        'PORT': ''
+    }
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -155,3 +153,6 @@ MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = 'media/'
 
 MEDIA_ROOT = MEDIA_DIR
+
+razor_pay_secret = "syxF5kJBvtyHKwUs9mAIzIut"
+razor_pay_id="rzp_test_brwgqHGO6cFnev"

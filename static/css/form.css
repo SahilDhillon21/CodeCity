@@ -1,4 +1,4 @@
-/* your CSS goes here*/
+
 body {
     background: #eee
 }
@@ -66,16 +66,16 @@ button:hover {
 
 .thanks-message {
     display: none
-}
+} 
 
 
-/* Hide the browser's default radio button */
 
-.container input[type="radio"] {
+/* Hide the browser's default radio button  */
+ .container input[type="radio"] {
     position: absolute;
     opacity: 0;
     cursor: pointer;
-}
+} 
 
 
 /* Create a custom radio button */
@@ -120,8 +120,8 @@ button:hover {
     display: block;
 }
 
-
-/* Style the indicator (dot/circle) */
+/* 
+Style the indicator (dot/circle)  */
 
 .container .checkmark:after {
     top: 9px;
@@ -132,9 +132,9 @@ button:hover {
     background: white;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap"); */
 
-:root {
+/* :root {
 	--yellow: #ffdd40;
 	--dark: #2f313a;
 	--deg: -86deg;
@@ -158,9 +158,9 @@ h2 {
 .team {
 	padding: 2em 0 2em 2.5em;
 	margin: 0;
-}
+} */
 
-.member {
+/* .member {
 	margin: 1.5em 0 0.5em;
 	padding: 0.73em;
 	background: linear-gradient(
@@ -182,9 +182,9 @@ h2 {
 		var(--yellow) 0 97%,
 		#fff0 calc(97% + 1px) 100%
 	);
-}
+} */
 
-.thumb {
+/* .thumb {
 	width: 13vmin;
 	height: 13vmin;
 	float: left;
@@ -208,9 +208,9 @@ h2 {
 	margin-left: 2em;
 	margin-right: -3em;
 	transform: rotate(4deg);
-}
+} */
 
-.thumb img {
+/* .thumb img {
 	width: 100%;
 	height: 100%;
 	border-radius: 0.25em;
@@ -229,9 +229,9 @@ h2 {
 	transition: var(--trans);
 	transform: rotate(-1deg);
 	--deg: -89deg;
-}
+} */
 
-.member:nth-of-type(even):hover .thumb {
+/* .member:nth-of-type(even):hover .thumb {
 	--deg: 91deg;
 }
 
@@ -313,9 +313,9 @@ h3 {
 	color: var(--dark);
 	background: var(--yellow);
 	font-weight: bold;
-}
+} */
 
-.description p a img {
+/* .description p a img {
 	float: left;
 	width: 22px;
 	filter: invert(1);
@@ -323,4 +323,9 @@ h3 {
 	padding: 2px;
 	background: #fff;
 	margin-right: 2px;
+} */
+
+.donor-card{
+	background: red;
+	color: white;
 }

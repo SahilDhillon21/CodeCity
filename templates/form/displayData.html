@@ -14,29 +14,32 @@
 <body>
     {% include 'form/nav.html' %}
     <div class="container text-center">
+        <div class="mt-5">
+            <form>
+                <script src="https://checkout.razorpay.com/v1/payment-button.js"
+                    data-payment_button_id="pl_MZw5NovHeGz0Ll" async> </script>
+            </form>
+        </div>
 
         <div class="content">
 
             <h1 style="color: white;">
-                <p class="mt-3">List of donors</p> 
+                <p class="mt-3">List of donors</p>
             </h1>
 
-            </h1>
+            <!-- {% for donator in donators %} -->
 
-            <ul class="team">
-
-                {% for donator in donators %}
-                <li class="member" style="width: 400px; height: 800px;">
+            <!-- <div class="col-md-4">
                     <div class="description">
                         <h2>{{donator.fname}} {{donator.lname}}</h2>
                         <p>Donation amount: Rs. {{donator.amount}}</p> <br>
                         <p>Address: {{donator.address}} </p> <br>
                         <p>City: {{donator.city}} </p>
                         <p>State: {{donator.state}} </p>
-                        <p>Country: {{donator.amount}}</p> <br>
+                        <p>Country: {{donator.amount}}</p>
                         <h2>Contact details</h2>
-                        <p>Email - {{donator.email}}</p> <br>
-                        <p>Mobile - {{donator.mobile}}</p> <br>
+                        <p>Email - {{donator.email}}</p>
+                        <p>Mobile - {{donator.mobile}}</p>
                         <button class="btn btn-dark">
                             <a class="btn btn-info" href="pdf_view/{{donator.fname}}" target="_blank">View Invoice</a>
 
@@ -46,11 +49,34 @@
                         </button>
                         </p>
                     </div>
-                </li>
+            </div> -->
 
+            
+
+            <!-- {% endfor %} -->
+
+            <div class="row">
+                {% for donator in donators %}
+                <div class="col-md-3 my-3 donor-card" style="background-color: gray; color: black; height: 550px; border: 1px solid black;" >
+                    <h2 class="my-3">{{donator.fname}} {{donator.lname}}</h2>
+                        <p>Donation amount: Rs. {{donator.amount}}</p> <br>
+                        <p>Address: {{donator.address}} </p> <br>
+                        <p>City: {{donator.city}} </p>
+                        <p>State: {{donator.state}} </p>
+                        <p>Country: {{donator.amount}}</p>
+                        <h2>Contact details</h2>
+                        <p>Email - {{donator.email}}</p>
+                        <p>Mobile - {{donator.mobile}}</p>
+                        <button class="btn btn-dark">
+                            <a class="btn btn-info btn-sm" href="pdf_view/{{donator.fname}}" target="_blank">View Invoice</a>
+
+                        </button>
+                        <button class="btn btn-dark">
+                            <a class="btn btn-info btn-sm" download href="pdf_view/{{donator.fname}}">Download Invoice</a>
+                        </button>
+                </div>
                 {% endfor %}
-
-            </ul>
+            </div>
 
         </div>
     </div>

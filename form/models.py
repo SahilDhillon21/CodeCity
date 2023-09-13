@@ -10,7 +10,7 @@ class Donator(models.Model):
     fname = models.CharField(max_length=100)
     lname = models.CharField(max_length=100)
     email = models.EmailField()
-    mobile = models.IntegerField()
+    mobile = models.CharField(max_length=15)
     address = models.TextField()
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=100)

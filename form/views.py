@@ -6,6 +6,10 @@ from django.http import HttpResponse
 from django.template.loader import get_template
 from django.views import View
 from xhtml2pdf import pisa
+import smtplib
+from email.message import EmailMessage
+
+from django.core.mail import send_mail
 
 def formInput(request):
     return render(request,"form/formInput.html")
@@ -38,7 +42,24 @@ def addData(request):
         )
         donator.save()
 
+        # msg = EmailMessage()
+
+        # msg['Subject'] = 'Thank you for your donation!'
+        # msg['From'] = '658sahil@gmail.com'
+        # msg['To'] = email
+        # msg.set_content("Thank you for donating "+str(amount)+", "+fname+" "+lname+"!")
         
+        # s = smtplib.SMTP('127.0.0.1',8000)
+        # s.send_message(msg)
+        # s.quit()
+
+        send_mail(
+        "Thank you for your donation!",
+        "Thank you "+fname+" "+lname+" for donating "+amount+"!",
+        "658sahil@gmail.com",
+        [str(email)],
+        fail_silently=False,
+        )
 
         return redirect(formInput)
     
